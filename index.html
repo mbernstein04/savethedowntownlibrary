@@ -873,7 +873,18 @@
               <span class="hero-progress-goal" id="heroProgressGoal">Goal: 500</span>
             </div>
           </div>
-          <form id="heroForm" class="hero-form" novalidate>
+          <form
+            id="heroForm"
+            class="hero-form"
+            name="petition"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            novalidate>
+            <input type="hidden" name="form-name" value="petition" />
+            <p class="sr-only" aria-hidden="true">
+              <label>Do not fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+            </p>
             <label for="heroName" class="sr-only">Your name</label>
             <input type="text" id="heroName" name="name" required autocomplete="name" placeholder="Your name" />
             <label for="heroEmail" class="sr-only">Email</label>
@@ -1145,30 +1156,31 @@
 
 <script>
   /*
-   * PETITION BACKEND NOTES (FOR DEPLOYMENT)
-   * ----------------------------------------
-   * This artifact uses Claude's built-in persistent shared storage so the counter
-   * and signature list actually work inside the preview. THAT WILL NOT WORK ON THE
-   * LIVE SITE. To deploy savethedowntownlibrary.org on Netlify (your OPOV workflow):
+   * PETITION BACKEND — PRODUCTION
+   * ------------------------------
+   * Signatures are submitted to Netlify Forms (no backend required — Netlify
+   * captures every submission, handles spam filtering via the honeypot, and
+   * emails you on each submission once you enable notifications in the dashboard).
    *
-   * 1. Add `data-netlify="true" name="petition" netlify-honeypot="bot-field"`
-   *    attributes to the <form> tag above, and add a hidden input:
-   *    <input type="hidden" name="form-name" value="petition" />
-   *    Netlify will auto-capture all submissions — no backend code required.
+   * The live signature count is fetched from a serverless function at
+   *   /.netlify/functions/count
+   * which uses the Netlify Forms API to return the current verified count.
    *
-   * 2. Replace the submit handler below with a simple fetch() POST to the same URL
-   *    (Netlify handles it), or let the form submit normally.
+   * DEPLOYMENT CHECKLIST:
+   *   1. Deploy this file as index.html to a Netlify site linked to a GitHub repo.
+   *   2. Commit the /netlify/functions/count.js file (in the repo root).
+   *   3. Commit the netlify.toml file (in the repo root).
+   *   4. In Netlify dashboard: Site settings → Forms → confirm "petition" form was detected.
+   *   5. Site settings → Forms → Form notifications → add email alert to your address.
+   *   6. Site settings → Environment variables → add:
+   *        NETLIFY_API_TOKEN   (create at app.netlify.com/user/applications#personal-access-tokens)
+   *        NETLIFY_FORM_ID     (shown on the Forms page after the first submission)
+   *      Both required for the live count fetch to work.
+   *   7. Redeploy once env vars are set.
    *
-   * 3. For the live signature count, either:
-   *    (a) Display a static count you update periodically from the Netlify dashboard; OR
-   *    (b) Use the Netlify Forms API (requires a personal access token and a small
-   *        serverless function — I can scaffold this for you when you're ready).
-   *
-   * 4. Consider double opt-in (send a confirmation email) before counting a signature
-   *    as valid, if you expect adversarial submissions. Formspree and ConvertKit both
-   *    handle this out of the box if you'd rather not roll it yourself.
-   *
-   * For now — in this preview — everything below uses window.storage.
+   * Until env vars are set the count endpoint returns 0 and the bar starts empty;
+   * submissions still work and are captured. Set env vars, redeploy, and the count
+   * starts displaying immediately.
    */
 
   const form = document.getElementById('heroForm');
@@ -1185,14 +1197,18 @@
   ].filter(Boolean);
 
   // Progress tracker
-  const GOAL = 500;  // Adjust as the campaign grows — bump to 1000 when you cross 400.
+  const GOAL = 500;  // Bump to 1000 when you cross ~400.
   const progressFill = document.getElementById('heroProgressFill');
   const progressText = document.getElementById('heroProgressText');
   const progressGoal = document.getElementById('heroProgressGoal');
 
-  const SIG_KEY = 'petition-signatures';
+  // Track the last known count locally so that if someone signs and our serverless
+  // count hasn't refreshed yet (Netlify has a brief verification delay), we still
+  // increment the bar immediately for a responsive feel.
+  let localCount = 0;
 
   function updateCounters(n) {
+    localCount = n;
     const label = Number(n).toLocaleString();
     counters.forEach(el => { el.textContent = label; });
 
@@ -1215,11 +1231,16 @@
 
   async function loadCount() {
     try {
-      const res = await window.storage.get(SIG_KEY, true);
-      const sigs = res ? JSON.parse(res.value) : [];
-      updateCounters(sigs.length);
+      const res = await fetch('/.netlify/functions/count', { cache: 'no-store' });
+      if (!res.ok) throw new Error('count endpoint returned ' + res.status);
+      const data = await res.json();
+      const n = Number(data.count) || 0;
+      // Never regress: if we've already incremented locally past what the
+      // server reports (server is a bit behind), hold the local value.
+      updateCounters(Math.max(n, localCount));
     } catch (e) {
-      updateCounters(0);
+      // Keep whatever we've got; fail quietly.
+      console.warn('[petition] count fetch failed:', e);
     }
   }
 
@@ -1238,6 +1259,13 @@
     return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
   }
 
+  // URL-encode a plain object for x-www-form-urlencoded POST to Netlify Forms.
+  function encodeForm(data) {
+    return Object.keys(data)
+      .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k]))
+      .join('&');
+  }
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     clearMessages();
@@ -1249,36 +1277,46 @@
     if (!validEmail(email)) { showError('Please enter a valid email address.'); return; }
 
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Signing...';
+    submitBtn.textContent = 'Signing…';
 
     try {
-      const res = await window.storage.get(SIG_KEY, true);
-      const sigs = res ? JSON.parse(res.value) : [];
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encodeForm({
+          'form-name': 'petition',
+          'bot-field': '',       // honeypot; must be present and empty
+          name: name,
+          email: email
+        })
+      });
 
-      // de-dupe by email (case-insensitive)
-      const lower = email.toLowerCase();
-      if (sigs.some(s => s.email && s.email.toLowerCase() === lower)) {
-        showError('This email has already signed. Thank you!');
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Add my name';
-        return;
-      }
+      if (!res.ok) throw new Error('submission failed: ' + res.status);
 
-      sigs.push({ name, email, ts: new Date().toISOString() });
-      await window.storage.set(SIG_KEY, JSON.stringify(sigs), true);
-
-      updateCounters(sigs.length);
+      // Optimistic increment — we don't wait for the server count to refresh.
+      updateCounters(localCount + 1);
       successEl.classList.remove('hidden');
       form.reset();
+
+      // Then re-sync from the server after a short delay so the eventual
+      // official count catches up and stays authoritative.
+      setTimeout(loadCount, 4000);
+
     } catch (err) {
-      showError('Something went wrong. Please try again.');
+      console.error('[petition] submit failed:', err);
+      showError('Something went wrong. Please try again, or email us at contact@savethedowntownlibrary.org.');
     } finally {
       submitBtn.disabled = false;
       submitBtn.textContent = 'Add my name';
     }
   });
 
+  // Initial load
+  updateCounters(0);
   loadCount();
+
+  // Refresh the count periodically so people who leave the tab open see new signatures.
+  setInterval(loadCount, 60000);
 </script>
 
 </body>

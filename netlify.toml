@@ -1,0 +1,13 @@
+# Netlify configuration for savethedowntownlibrary.org
+
+[build]
+  # No build step — this is a static HTML site.
+  publish = "."
+  functions = "netlify/functions"
+
+# Cache the count endpoint for 30 seconds at the CDN edge.
+# Browsers also cache for 30s (see Cache-Control header in count.js).
+[[headers]]
+  for = "/.netlify/functions/count"
+  [headers.values]
+    Cache-Control = "public, max-age=30, s-maxage=30"
