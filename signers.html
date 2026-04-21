@@ -287,12 +287,10 @@
     return new Date(isoStr).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
   }
 
-  function displayNameFormatted(raw) {
-    if (!raw) return 'Anonymous';
-    const parts = raw.trim().split(/\s+/);
-    if (parts.length === 1) return parts[0];
-    return parts[0] + ' ' + parts[parts.length - 1].charAt(0).toUpperCase() + '.';
-  }
+ function displayNameFormatted(raw) {
+  if (!raw) return 'Anonymous';
+  return raw.trim();
+}
 
   function escapeHtml(s) {
     return String(s).replace(/[&<>"']/g, function (c) {
