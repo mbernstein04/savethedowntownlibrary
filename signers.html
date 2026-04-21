@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Duluthians for the Downtown Library — Save the Downtown Library</title>
+<meta name="description" content="Neighbors who've publicly added their names to the petition to keep the Main Library downtown." />
+<meta name="robots" content="index,follow" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,500&family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f2236;
+    --ink-soft: #223852;
+    --ink-faint: #4a6280;
+    --paper: #f5ede0;
+    --paper-warm: #ebe0cd;
+    --paper-deep: #dfd1b6;
+    --amber: #b98236;
+    --amber-deep: #8c5c1f;
+    --brick: #8c2a2a;
+    --line: rgba(15, 34, 54, 0.18);
+    --line-soft: rgba(15, 34, 54, 0.08);
+    --serif: "Fraunces", "Iowan Old Style", Georgia, serif;
+    --sans: "Figtree", -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    background-image:
+      radial-gradient(circle at 15% 10%, rgba(185, 130, 54, 0.08), transparent 40%),
+      radial-gradient(circle at 85% 85%, rgba(140, 42, 42, 0.06), transparent 40%);
+  }
+
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .masthead {
+    border-bottom: 1px solid var(--line);
+    padding: 22px 0;
+  }
+  .masthead-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .logo {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+    font-variation-settings: "opsz" 36;
+  }
+  .logo em { font-style: italic; font-weight: 400; color: var(--amber-deep); }
+  .back-link {
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .back-link:hover { color: var(--amber-deep); border-bottom-color: var(--amber-deep); }
+
+  .page-head {
+    padding: 72px 0 32px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .page-label {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    margin-bottom: 22px;
+  }
+  .page-head h1 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(40px, 6vw, 64px);
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin-bottom: 20px;
+    font-variation-settings: "opsz" 144;
+  }
+  .page-head h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--amber-deep);
+  }
+  .page-count {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(18px, 2vw, 22px);
+    color: var(--ink-soft);
+    font-variation-settings: "opsz" 36;
+  }
+  .page-count strong {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .signers-list {
+    padding: 12px 0 20px;
+    list-style: none;
+  }
+  .signer {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line-soft);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    opacity: 0;
+    transform: translateY(6px);
+    animation: fadeInUp 0.45s forwards;
+  }
+  .signer .name {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(20px, 2.4vw, 24px);
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    font-variation-settings: "opsz" 72;
+  }
+  .signer .when {
+    font-family: var(--sans);
+    font-size: 12.5px;
+    color: var(--ink-faint);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+  }
+
+  @keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .status {
+    padding: 80px 0;
+    text-align: center;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 19px;
+    color: var(--ink-faint);
+    font-variation-settings: "opsz" 36;
+  }
+  .status.error { color: var(--brick); }
+
+  .load-more-wrap {
+    text-align: center;
+    padding: 20px 0 60px;
+  }
+  .load-more {
+    display: inline-block;
+    padding: 12px 22px;
+    background: transparent;
+    color: var(--amber-deep);
+    border: 1px solid var(--amber-deep);
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+  .load-more:hover {
+    background: var(--amber-deep);
+    color: var(--paper);
+  }
+
+  .empty {
+    padding: 80px 0;
+    text-align: center;
+  }
+  .empty h2 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(28px, 3.5vw, 36px);
+    color: var(--ink);
+    margin-bottom: 14px;
+    font-variation-settings: "opsz" 72;
+  }
+  .empty h2 em { font-style: italic; color: var(--amber-deep); }
+  .empty p {
+    color: var(--ink-soft);
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 480px;
+    margin: 0 auto 28px;
+  }
+  .empty a.btn-amber {
+    display: inline-block;
+    background: var(--amber-deep);
+    color: var(--paper);
+    padding: 14px 26px;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .empty a.btn-amber:hover { background: var(--ink); }
+
+  footer.page-foot {
+    border-top: 1px solid var(--line);
+    padding: 36px 0;
+    margin-top: 60px;
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ink-faint);
+    line-height: 1.6;
+  }
+  footer.page-foot a { color: var(--amber-deep); text-decoration: none; }
+  footer.page-foot a:hover { color: var(--ink); }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="container masthead-inner">
+    <a class="logo" href="/">Save <em>the</em> Downtown Library</a>
+    <a class="back-link" href="/">← Back to the main site</a>
+  </div>
+</header>
+
+<div class="container">
+  <div class="page-head">
+    <div class="page-label">Public Signers</div>
+    <h1>Duluthians <em>for the</em> Downtown Library</h1>
+    <p class="page-count" id="count">Loading…</p>
+  </div>
+
+  <div id="list-container"></div>
+</div>
+
+<footer class="page-foot">
+  <div class="container">
+    Only signers who checked "Display my name publicly" appear here. Every other signature is kept private and counted only toward the total on the <a href="/">main site</a>.
+  </div>
+</footer>
+
+<script>
+(function () {
+  const container = document.getElementById('list-container');
+  const countEl = document.getElementById('count');
+  const PAGE_SIZE = 50;
+  let allSigners = [];
+  let shown = 0;
+
+  // --- relative time ---
+  function relativeTime(isoStr) {
+    const then = new Date(isoStr).getTime();
+    if (!then) return '';
+    const diffSec = Math.max(0, Math.floor((Date.now() - then) / 1000));
+    if (diffSec < 45) return 'just now';
+    const diffMin = Math.floor(diffSec / 60);
+    if (diffMin < 60) return diffMin + (diffMin === 1 ? ' minute ago' : ' minutes ago');
+    const diffHr = Math.floor(diffMin / 60);
+    if (diffHr < 24) return diffHr + (diffHr === 1 ? ' hour ago' : ' hours ago');
+    const diffDay = Math.floor(diffHr / 24);
+    if (diffDay <= 30) return diffDay + (diffDay === 1 ? ' day ago' : ' days ago');
+    return new Date(isoStr).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+  }
+
+  function displayNameFormatted(raw) {
+    if (!raw) return 'Anonymous';
+    const parts = raw.trim().split(/\s+/);
+    if (parts.length === 1) return parts[0];
+    return parts[0] + ' ' + parts[parts.length - 1].charAt(0).toUpperCase() + '.';
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c];
+    });
+  }
+
+  function showStatus(text, isError) {
+    container.innerHTML = '<div class="status' + (isError ? ' error' : '') + '">' + escapeHtml(text) + '</div>';
+  }
+
+  function showEmpty() {
+    container.innerHTML =
+      '<div class="empty">' +
+        '<h2>Be the <em>first</em> to publicly sign.</h2>' +
+        "<p>No one has opted in to show their name yet. Go back to the main page and sign with the box checked — your name will lead the list here.</p>" +
+        '<a class="btn-amber" href="/#sign">Go to sign form</a>' +
+      '</div>';
+  }
+
+  function renderBatch(from, to) {
+    const list = document.querySelector('.signers-list');
+    const fragment = document.createDocumentFragment();
+    allSigners.slice(from, to).forEach(function (s, i) {
+      const row = document.createElement('div');
+      row.className = 'signer';
+      row.style.animationDelay = (i * 0.03) + 's';
+      row.innerHTML =
+        '<span class="name">' + escapeHtml(displayNameFormatted(s.name)) + '</span>' +
+        '<span class="when">signed ' + escapeHtml(relativeTime(s.createdAt)) + '</span>';
+      fragment.appendChild(row);
+    });
+    list.appendChild(fragment);
+  }
+
+  function renderFirstPage() {
+    container.innerHTML = '<div class="signers-list"></div>';
+    renderBatch(0, PAGE_SIZE);
+    shown = Math.min(PAGE_SIZE, allSigners.length);
+
+    if (shown < allSigners.length) {
+      const wrap = document.createElement('div');
+      wrap.className = 'load-more-wrap';
+      wrap.innerHTML = '<button class="load-more" id="load-more">Show more signers</button>';
+      container.appendChild(wrap);
+      document.getElementById('load-more').addEventListener('click', loadMore);
+    }
+  }
+
+  function loadMore() {
+    const next = Math.min(shown + PAGE_SIZE, allSigners.length);
+    renderBatch(shown, next);
+    shown = next;
+    if (shown >= allSigners.length) {
+      const wrap = document.querySelector('.load-more-wrap');
+      if (wrap) wrap.remove();
+    }
+  }
+
+  showStatus('Loading signers…');
+  fetch('/.netlify/functions/public-signers')
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      if (data.error) {
+        showStatus('Unable to load signers right now. Please try again later.', true);
+        countEl.textContent = '';
+        return;
+      }
+
+      allSigners = Array.isArray(data.signers) ? data.signers : [];
+      const n = typeof data.count === 'number' ? data.count : allSigners.length;
+
+      if (allSigners.length === 0) {
+        countEl.textContent = 'No one has signed publicly yet.';
+        showEmpty();
+        return;
+      }
+
+      countEl.innerHTML = '<strong>' + n.toLocaleString() + '</strong> ' +
+        (n === 1 ? 'neighbor has' : 'neighbors have') + ' signed publicly';
+      renderFirstPage();
+    })
+    .catch(function () {
+      showStatus('Unable to load signers right now. Please try again later.', true);
+      countEl.textContent = '';
+    });
+})();
+</script>
+
+</body>
+</html>
