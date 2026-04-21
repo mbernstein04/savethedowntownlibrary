@@ -288,6 +288,14 @@
   .hero-progress-goal {
     color: var(--amber-deep);
   }
+  .hero-progress-why {
+    margin-top: 12px;
+    font-size: 11.5px;
+    line-height: 1.5;
+    color: var(--ink-faint);
+    font-style: italic;
+    font-family: var(--serif);
+  }
 
   .hero-form {
     display: grid;
@@ -837,7 +845,7 @@
         <div class="hero-meta">
           <span>Building<strong>520 W. Superior St.</strong></span>
           <span>Designed<strong>Gunnar Birkerts, 1980</strong></span>
-          <span>Annual visitors<strong>338,506</strong></span>
+          <span>Annual visits<strong>328,636 (2024)</strong></span>
         </div>
       </div>
       <aside class="hero-aside">
@@ -880,8 +888,12 @@
             </div>
             <div class="hero-progress-label">
               <span id="heroProgressText">toward the goal</span>
-              <span class="hero-progress-goal" id="heroProgressGoal">Goal: 500</span>
+              <span class="hero-progress-goal" id="heroProgressGoal">Goal: 12,600</span>
             </div>
+            <p class="hero-progress-why">
+              Why 12,600? That's how many people walk through the Main Library's doors in an average month.
+              One signature for every person the city serves there.
+            </p>
           </div>
           <form
             id="heroForm"
@@ -897,13 +909,13 @@
             </p>
             <label for="heroName" class="sr-only">Your name</label>
             <input type="text" id="heroName" name="name" required autocomplete="name" placeholder="Your name" />
-            <label for="heroEmail" class="sr-only">Email</label>
-            <input type="email" id="heroEmail" name="email" required autocomplete="email" placeholder="Email" />
+            <label for="heroEmail" class="sr-only">Email (optional)</label>
+            <input type="email" id="heroEmail" name="email" autocomplete="email" placeholder="Email (optional)" />
             <button type="submit" class="btn-amber" id="heroSubmitBtn">Add my name</button>
             <div class="form-success hidden" id="heroFormSuccess">Thank you — your signature is recorded.</div>
             <div class="form-error hidden" id="heroFormError"></div>
           </form>
-          <p class="hero-sign-note">Only your name is published (first + last initial). Email is never shared.</p>
+          <p class="hero-sign-note">Your signature is private. Only the total count is public. Email is optional — if you share it, it's never published or sold, only used for occasional campaign updates.</p>
         </div>
       </aside>
     </div>
@@ -921,9 +933,9 @@
 
     <div class="stakes-grid">
       <div class="stake">
-        <div class="num">680,215</div>
-        <h3>Items circulated in 2025</h3>
-        <p>System-wide physical circulation, up 9% from 2024. The Main Library accounts for more than 40% of that volume.</p>
+        <div class="num">12,600</div>
+        <h3>Visitors to the Main Library, <em>every month</em></h3>
+        <p>Average 2025 monthly visitor count at 520 W. Superior Street alone — roughly 420 people a day the doors are open. Source: <a href="https://duluthmn.gov/media/websubscriptions/178/20260102-178-18880.pdf" target="_blank" rel="noopener">Library Board packet, Jan 6, 2026</a>.</p>
       </div>
       <div class="stake">
         <div class="num">$350,000</div>
@@ -1207,7 +1219,8 @@
   ].filter(Boolean);
 
   // Progress tracker
-  const GOAL = 500;  // Bump to 1000 when you cross ~400.
+  const GOAL = 12600;  // Average monthly Main Library visitors, 2025 (Library Board packet data).
+                       // Symbolic: one signature for every person who walks through the doors in a month.
   const progressFill = document.getElementById('heroProgressFill');
   const progressText = document.getElementById('heroProgressText');
   const progressGoal = document.getElementById('heroProgressGoal');
@@ -1284,7 +1297,8 @@
     const email = emailInput.value.trim();
 
     if (!name || name.length < 2) { showError('Please enter your full name.'); return; }
-    if (!validEmail(email)) { showError('Please enter a valid email address.'); return; }
+    // Email is optional; validate format only if something was entered.
+    if (email && !validEmail(email)) { showError('That email doesn\'t look right. Leave it blank or correct it.'); return; }
 
     submitBtn.disabled = true;
     submitBtn.textContent = 'Signing…';
