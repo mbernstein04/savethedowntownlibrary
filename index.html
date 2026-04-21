@@ -343,6 +343,118 @@
     margin-top: 10px;
     line-height: 1.5;
   }
+  .hero-form .field-check {
+    margin: 2px 0 4px;
+    line-height: 1.5;
+  }
+  .hero-form .check-label {
+    display: flex;
+    gap: 9px;
+    align-items: flex-start;
+    font-family: var(--sans);
+    font-size: 13.5px;
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .hero-form .check-label input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    margin: 3px 0 0;
+    accent-color: var(--amber-deep);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .hero-form .check-help {
+    display: block;
+    margin: 5px 0 0 24px;
+    font-size: 11.5px;
+    color: var(--ink-faint);
+    line-height: 1.5;
+    font-family: var(--sans);
+  }
+  .hero-see-signers {
+    display: inline-block;
+    margin-top: 14px;
+    font-family: var(--sans);
+    font-size: 12px;
+    color: var(--amber-deep);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 1px;
+    letter-spacing: 0.03em;
+  }
+  .hero-see-signers:hover { color: var(--ink); }
+  .hero-form .field-check--forum {
+    max-height: 0;
+    opacity: 0;
+    margin: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, opacity 0.25s ease 0.05s, margin 0.35s ease;
+    pointer-events: none;
+  }
+  .hero-form .field-check--forum.is-visible {
+    max-height: 200px;
+    opacity: 1;
+    margin: 2px 0 4px;
+    pointer-events: auto;
+  }
+  .hero-form .form-success .success-link {
+    display: block;
+    margin-top: 8px;
+    font-family: var(--sans);
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--amber-deep);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 1px;
+    letter-spacing: 0.02em;
+    width: max-content;
+  }
+  .hero-form .form-success .success-link:hover {
+    color: var(--ink);
+    border-bottom-color: var(--ink);
+  }
+  .hero-form .form-success .success-forum {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(185, 130, 54, 0.35);
+  }
+  .hero-form .form-success .success-forum-heading {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.2;
+    color: var(--ink);
+    margin: 0 0 6px;
+    font-variation-settings: "opsz" 36;
+  }
+  .hero-form .form-success .success-forum-lede {
+    font-family: var(--sans);
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0 0 12px;
+  }
+  .hero-form .form-success .btn-amber-outline {
+    display: inline-block;
+    padding: 11px 18px;
+    background: transparent;
+    color: var(--amber-deep);
+    font-family: var(--sans);
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1.5px solid var(--amber-deep);
+    transition: background 0.2s, color 0.2s;
+  }
+  .hero-form .form-success .btn-amber-outline:hover {
+    background: var(--amber-deep);
+    color: var(--paper);
+  }
   .hero-form .form-success,
   .hero-form .form-error {
     font-size: 13px;
@@ -849,20 +961,6 @@
         </div>
       </div>
       <aside class="hero-aside">
-        <!--
-          PHOTO: Hero image below points to a Wikimedia Commons photo of the
-          downtown Duluth Public Library (Birkerts building, 520 W. Superior St).
-          Before publishing live at savethedowntownlibrary.org you should:
-            (1) Confirm the license on the Wikimedia file page and record the
-                photographer's name + license (e.g., "Photo: [name] / Flickr, CC BY 2.0").
-            (2) Download the image and host it locally (e.g., /images/library.jpg)
-                rather than hotlinking Wikimedia. Update src and .photo-credit below.
-            (3) Alternative (best): commission or take an original photograph.
-                A civic campaign anchored in original photography reads as more
-                authentic than a repurposed file photo.
-          File URL:
-            https://commons.wikimedia.org/wiki/File:Duluth_Public_Library_-_Duluth,_Minnesota_(25072425050).jpg
-        -->
         <figure class="hero-photo">
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/5/56/Duluth_Public_Library_-_Duluth%2C_Minnesota_%2825072425050%29.jpg"
@@ -911,11 +1009,26 @@
             <input type="text" id="heroName" name="name" required autocomplete="name" placeholder="Your name" />
             <label for="heroEmail" class="sr-only">Email (optional)</label>
             <input type="email" id="heroEmail" name="email" autocomplete="email" placeholder="Email (optional)" />
+            <div class="field-check">
+              <label class="check-label" for="heroPublic">
+                <input type="checkbox" id="heroPublic" name="public" />
+                <span>Display my name publicly on the signers page</span>
+              </label>
+              <p class="check-help">Your name will appear on savethedowntownlibrary.org alongside others who've signed. Uncheck this box if you'd rather remain anonymous.</p>
+            </div>
+            <div class="field-check field-check--forum" id="heroForumWrap" aria-hidden="true">
+              <label class="check-label" for="heroForum">
+                <input type="checkbox" id="heroForum" name="forum" />
+                <span>Join the organizers' community Discourse forum</span>
+              </label>
+              <p class="check-help">We'll email you an invite to savethedowntownlibrary.discourse.group — the forum where organizers post updates, plan actions, and talk through next steps. Your email is visible to other members when you post. Unsubscribe anytime.</p>
+            </div>
             <button type="submit" class="btn-amber" id="heroSubmitBtn">Add my name</button>
             <div class="form-success hidden" id="heroFormSuccess">Thank you — your signature is recorded.</div>
             <div class="form-error hidden" id="heroFormError"></div>
           </form>
           <p class="hero-sign-note">Your signature is private. Only the total count is public. Email is optional — if you share it, it's never published or sold, only used for occasional campaign updates.</p>
+          <a class="hero-see-signers" href="/signers.html">See who's signed publicly →</a>
         </div>
       </aside>
     </div>
@@ -1177,57 +1290,26 @@
 </footer>
 
 <script>
-  /*
-   * PETITION BACKEND — PRODUCTION
-   * ------------------------------
-   * Signatures are submitted to Netlify Forms (no backend required — Netlify
-   * captures every submission, handles spam filtering via the honeypot, and
-   * emails you on each submission once you enable notifications in the dashboard).
-   *
-   * The live signature count is fetched from a serverless function at
-   *   /.netlify/functions/count
-   * which uses the Netlify Forms API to return the current verified count.
-   *
-   * DEPLOYMENT CHECKLIST:
-   *   1. Deploy this file as index.html to a Netlify site linked to a GitHub repo.
-   *   2. Commit the /netlify/functions/count.js file (in the repo root).
-   *   3. Commit the netlify.toml file (in the repo root).
-   *   4. In Netlify dashboard: Site settings → Forms → confirm "petition" form was detected.
-   *   5. Site settings → Forms → Form notifications → add email alert to your address.
-   *   6. Site settings → Environment variables → add:
-   *        NETLIFY_API_TOKEN   (create at app.netlify.com/user/applications#personal-access-tokens)
-   *        NETLIFY_FORM_ID     (shown on the Forms page after the first submission)
-   *      Both required for the live count fetch to work.
-   *   7. Redeploy once env vars are set.
-   *
-   * Until env vars are set the count endpoint returns 0 and the bar starts empty;
-   * submissions still work and are captured. Set env vars, redeploy, and the count
-   * starts displaying immediately.
-   */
-
   const form = document.getElementById('heroForm');
   const nameInput = document.getElementById('heroName');
   const emailInput = document.getElementById('heroEmail');
+  const publicInput = document.getElementById('heroPublic');
+  const forumInput = document.getElementById('heroForum');
+  const forumWrap = document.getElementById('heroForumWrap');
   const successEl = document.getElementById('heroFormSuccess');
   const errorEl = document.getElementById('heroFormError');
   const submitBtn = document.getElementById('heroSubmitBtn');
 
-  // Two counters on page: hero top and petition section bottom. Keep them in sync.
   const counters = [
     document.getElementById('heroCountNum'),
     document.getElementById('signatureCount')
   ].filter(Boolean);
 
-  // Progress tracker
-  const GOAL = 12600;  // Average monthly Main Library visitors, 2025 (Library Board packet data).
-                       // Symbolic: one signature for every person who walks through the doors in a month.
+  const GOAL = 12600;
   const progressFill = document.getElementById('heroProgressFill');
   const progressText = document.getElementById('heroProgressText');
   const progressGoal = document.getElementById('heroProgressGoal');
 
-  // Track the last known count locally so that if someone signs and our serverless
-  // count hasn't refreshed yet (Netlify has a brief verification delay), we still
-  // increment the bar immediately for a responsive feel.
   let localCount = 0;
 
   function updateCounters(n) {
@@ -1258,11 +1340,8 @@
       if (!res.ok) throw new Error('count endpoint returned ' + res.status);
       const data = await res.json();
       const n = Number(data.count) || 0;
-      // Never regress: if we've already incremented locally past what the
-      // server reports (server is a bit behind), hold the local value.
       updateCounters(Math.max(n, localCount));
     } catch (e) {
-      // Keep whatever we've got; fail quietly.
       console.warn('[petition] count fetch failed:', e);
     }
   }
@@ -1278,11 +1357,23 @@
     successEl.classList.add('hidden');
   }
 
+  function maybeShowForum() {
+    if (!forumWrap) return;
+    const v = emailInput.value.trim();
+    const showIt = v.length > 3 && validEmail(v);
+    forumWrap.classList.toggle('is-visible', showIt);
+    forumWrap.setAttribute('aria-hidden', showIt ? 'false' : 'true');
+    if (!showIt && forumInput) forumInput.checked = false;
+  }
+  if (emailInput) {
+    emailInput.addEventListener('input', maybeShowForum);
+    emailInput.addEventListener('blur', maybeShowForum);
+  }
+
   function validEmail(v) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
   }
 
-  // URL-encode a plain object for x-www-form-urlencoded POST to Netlify Forms.
   function encodeForm(data) {
     return Object.keys(data)
       .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k]))
@@ -1295,35 +1386,51 @@
 
     const name = nameInput.value.trim();
     const email = emailInput.value.trim();
+    const isPublic = publicInput && publicInput.checked;
+    const wantsForum = forumInput && forumInput.checked && email && validEmail(email);
 
     if (!name || name.length < 2) { showError('Please enter your full name.'); return; }
-    // Email is optional; validate format only if something was entered.
     if (email && !validEmail(email)) { showError('That email doesn\'t look right. Leave it blank or correct it.'); return; }
 
     submitBtn.disabled = true;
     submitBtn.textContent = 'Signing…';
 
     try {
+      const payload = {
+        'form-name': 'petition',
+        'bot-field': '',
+        name: name,
+        email: email
+      };
+      if (isPublic) payload.public = 'on';
+      if (wantsForum) payload.forum = 'on';
+
       const res = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encodeForm({
-          'form-name': 'petition',
-          'bot-field': '',       // honeypot; must be present and empty
-          name: name,
-          email: email
-        })
+        body: encodeForm(payload)
       });
 
       if (!res.ok) throw new Error('submission failed: ' + res.status);
 
-      // Optimistic increment — we don't wait for the server count to refresh.
       updateCounters(localCount + 1);
-      successEl.classList.remove('hidden');
-      form.reset();
 
-      // Then re-sync from the server after a short delay so the eventual
-      // official count catches up and stays authoritative.
+      const linkText = isPublic
+        ? 'See your name on the signers page →'
+        : "See who's signed publicly →";
+      successEl.innerHTML =
+        'Thank you — your signature is recorded. ' +
+        '<a class="success-link" href="/signers.html">' + linkText + '</a>' +
+        '<div class="success-forum">' +
+          '<h4 class="success-forum-heading">Join the conversation</h4>' +
+          "<p class=\"success-forum-lede\">We're building a community of Duluthians who care about the downtown library. Come share your thoughts, hear from others, and stay up to date.</p>" +
+          '<a class="btn-amber-outline" href="https://savethedowntownlibrary.discourse.group" target="_blank" rel="noopener">Visit the community forum →</a>' +
+        '</div>';
+      successEl.classList.remove('hidden');
+
+      form.reset();
+      maybeShowForum();
+
       setTimeout(loadCount, 4000);
 
     } catch (err) {
@@ -1335,11 +1442,9 @@
     }
   });
 
-  // Initial load
   updateCounters(0);
   loadCount();
 
-  // Refresh the count periodically so people who leave the tab open see new signatures.
   setInterval(loadCount, 60000);
 </script>
 
