@@ -1,0 +1,1285 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Save the Downtown Library — A Duluth Civic Record</title>
+<meta name="description" content="A citizen-run record of the Reinert administration's proposal to move the Duluth Public Library out of downtown. Timeline, petition, and ways to take action." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,500&family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f2236;
+    --ink-soft: #223852;
+    --ink-faint: #4a6280;
+    --paper: #f5ede0;
+    --paper-warm: #ebe0cd;
+    --paper-deep: #dfd1b6;
+    --amber: #b98236;
+    --amber-deep: #8c5c1f;
+    --brick: #8c2a2a;
+    --line: rgba(15, 34, 54, 0.18);
+    --line-soft: rgba(15, 34, 54, 0.08);
+    --serif: "Fraunces", "Iowan Old Style", Georgia, serif;
+    --sans: "Figtree", -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    background-image:
+      radial-gradient(circle at 15% 10%, rgba(185, 130, 54, 0.08), transparent 40%),
+      radial-gradient(circle at 85% 85%, rgba(140, 42, 42, 0.06), transparent 40%);
+  }
+
+  .container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .narrow {
+    max-width: 720px;
+  }
+
+  /* ===== Masthead ===== */
+  .masthead {
+    border-bottom: 1px solid var(--line);
+    padding: 18px 0;
+    background: var(--paper);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(6px);
+    background: rgba(245, 237, 224, 0.92);
+  }
+  .masthead-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .wordmark {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    font-variation-settings: "opsz" 144;
+  }
+  .wordmark em {
+    font-style: italic;
+    color: var(--amber-deep);
+  }
+  .masthead nav {
+    display: flex;
+    gap: 28px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  .masthead nav a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .masthead nav a:hover { border-bottom-color: var(--amber); }
+
+  /* ===== Hero ===== */
+  .hero {
+    padding: 80px 0 60px;
+    border-bottom: 2px solid var(--ink);
+  }
+  .kicker {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    margin-bottom: 28px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .kicker::before {
+    content: "";
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background: var(--amber-deep);
+  }
+  h1.hero-title {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(38px, 6vw, 74px);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+    margin-bottom: 32px;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+  }
+  h1.hero-title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--amber-deep);
+    font-variation-settings: "opsz" 144, "SOFT" 80;
+  }
+  .hero-sub {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(19px, 2.4vw, 24px);
+    line-height: 1.45;
+    color: var(--ink-soft);
+    max-width: 680px;
+    margin-bottom: 40px;
+    font-variation-settings: "opsz" 36;
+  }
+  .hero-meta {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: var(--ink-faint);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .hero-meta span strong {
+    display: block;
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--ink);
+    text-transform: none;
+    letter-spacing: -0.01em;
+    margin-top: 2px;
+  }
+
+  /* ===== Hero grid (text + photo + compact form) ===== */
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    gap: 56px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+  .hero-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .hero-photo {
+    margin: 0;
+    position: relative;
+  }
+  .hero-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background: var(--paper-deep);
+    box-shadow: 0 14px 44px -14px rgba(15, 34, 54, 0.38);
+    filter: saturate(0.92) contrast(1.03);
+  }
+  .hero-photo figcaption {
+    font-family: var(--sans);
+    font-size: 11.5px;
+    color: var(--ink-faint);
+    margin-top: 10px;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+  }
+  .hero-photo .photo-credit {
+    display: block;
+    font-size: 10.5px;
+    margin-top: 3px;
+    opacity: 0.75;
+  }
+  .hero-sign {
+    background: var(--paper-deep);
+    padding: 22px 24px 20px;
+    border-left: 4px solid var(--amber-deep);
+  }
+  .hero-sign-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 14px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero-sign-head h3 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 17px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .hero-count-num {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 28px;
+    letter-spacing: -0.02em;
+    color: var(--amber-deep);
+    line-height: 1;
+    font-variation-settings: "opsz" 144;
+  }
+  .hero-count-label {
+    font-size: 11px;
+    color: var(--ink-faint);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-left: 4px;
+  }
+  .hero-progress {
+    margin-bottom: 18px;
+  }
+  .hero-progress-track {
+    height: 6px;
+    background: rgba(15, 34, 54, 0.08);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-progress-fill {
+    height: 100%;
+    background: var(--amber-deep);
+    width: 0%;
+    transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .hero-progress-label {
+    margin-top: 9px;
+    font-family: var(--sans);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .hero-progress-goal {
+    color: var(--amber-deep);
+  }
+
+  .hero-form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .hero-form input {
+    padding: 11px 12px;
+    border: 1px solid var(--line);
+    background: var(--paper);
+    font-family: var(--serif);
+    font-size: 15px;
+    color: var(--ink);
+    outline: none;
+    font-variation-settings: "opsz" 36;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+  .hero-form input:focus {
+    border-color: var(--amber-deep);
+  }
+  .hero-form input::placeholder {
+    color: var(--ink-faint);
+    opacity: 0.55;
+  }
+  .btn-amber {
+    background: var(--amber-deep);
+    padding: 13px 22px;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    border: none;
+    cursor: pointer;
+    font-family: var(--sans);
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--paper);
+    transition: background 0.2s;
+    width: 100%;
+  }
+  .btn-amber:hover { background: var(--ink); }
+  .btn-amber:disabled { opacity: 0.6; cursor: not-allowed; }
+  .hero-sign-note {
+    font-size: 11px;
+    color: var(--ink-faint);
+    margin-top: 10px;
+    line-height: 1.5;
+  }
+  .hero-form .form-success,
+  .hero-form .form-error {
+    font-size: 13px;
+    padding: 10px 12px;
+    line-height: 1.5;
+    border-left-width: 3px;
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* ===== Stakes ===== */
+  .stakes {
+    padding: 72px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    margin-bottom: 20px;
+  }
+  h2.section-title {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(32px, 4.5vw, 48px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 36px;
+    max-width: 820px;
+    font-variation-settings: "opsz" 144;
+  }
+  h2.section-title em {
+    font-style: italic;
+    color: var(--amber-deep);
+  }
+  .stakes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 32px 48px;
+    margin-top: 48px;
+  }
+  .stake {
+    border-top: 2px solid var(--ink);
+    padding-top: 20px;
+  }
+  .stake .num {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 36px;
+    letter-spacing: -0.02em;
+    color: var(--amber-deep);
+    margin-bottom: 8px;
+    font-variation-settings: "opsz" 144;
+  }
+  .stake .num small {
+    font-size: 14px;
+    color: var(--ink-faint);
+    margin-left: 4px;
+    font-weight: 400;
+  }
+  .stake h3 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+  .stake p {
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+
+  .prose {
+    font-family: var(--serif);
+    font-size: 20px;
+    line-height: 1.55;
+    color: var(--ink);
+    max-width: 680px;
+    font-variation-settings: "opsz" 36;
+  }
+  .prose p + p { margin-top: 1.2em; }
+  .prose em { color: var(--amber-deep); font-style: italic; }
+
+  /* ===== Framing / Context ===== */
+  .framing-section {
+    padding: 72px 0;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+  }
+  .claim-box {
+    background: var(--paper-deep);
+    padding: 36px 40px 32px;
+    margin: 44px 0 40px;
+    max-width: 760px;
+    border-left: 4px solid var(--brick);
+    position: relative;
+  }
+  .claim-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--brick);
+    margin-bottom: 14px;
+  }
+  .claim-text {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(20px, 2.2vw, 26px);
+    line-height: 1.4;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+    font-variation-settings: "opsz" 48;
+  }
+  .claim-cite {
+    font-size: 13px;
+    color: var(--ink-faint);
+    margin-top: 18px;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+  }
+  .response-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    margin-bottom: 18px;
+    margin-top: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .response-label::before {
+    content: "";
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background: var(--amber-deep);
+  }
+
+  /* ===== Timeline ===== */
+  .timeline-section {
+    padding: 72px 0;
+    background: var(--paper-warm);
+    border-bottom: 1px solid var(--line);
+  }
+  .timeline {
+    margin-top: 40px;
+    border-left: 2px solid var(--ink);
+    padding-left: 40px;
+    position: relative;
+  }
+  .tl-entry {
+    position: relative;
+    padding-bottom: 40px;
+  }
+  .tl-entry:last-child { padding-bottom: 0; }
+  .tl-entry::before {
+    content: "";
+    position: absolute;
+    left: -48px;
+    top: 8px;
+    width: 14px;
+    height: 14px;
+    background: var(--paper-warm);
+    border: 2px solid var(--ink);
+    border-radius: 50%;
+  }
+  .tl-entry.flag::before {
+    background: var(--brick);
+    border-color: var(--brick);
+  }
+  .tl-date {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    margin-bottom: 8px;
+  }
+  .tl-entry h4 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 1.25;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .tl-entry p {
+    font-size: 15.5px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    max-width: 640px;
+  }
+  .tl-entry p + p { margin-top: 10px; }
+  .tl-source {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--ink-faint);
+    letter-spacing: 0.06em;
+    font-weight: 500;
+  }
+
+  /* ===== Petition ===== */
+  .petition-section {
+    padding: 100px 0;
+    background: var(--ink);
+    color: var(--paper);
+    position: relative;
+    overflow: hidden;
+  }
+  .petition-section::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(circle at 20% 30%, rgba(185, 130, 54, 0.12), transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(245, 237, 224, 0.04), transparent 50%);
+    pointer-events: none;
+  }
+  .petition-section .container { position: relative; z-index: 1; }
+  .petition-section .section-label { color: var(--amber); }
+  .petition-section h2 { color: var(--paper); }
+  .petition-section h2 em { color: var(--amber); }
+
+  .petition-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    margin-top: 48px;
+    align-items: start;
+  }
+  @media (max-width: 780px) {
+    .petition-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  .petition-text {
+    font-family: var(--serif);
+    font-size: 18px;
+    line-height: 1.55;
+    color: rgba(245, 237, 224, 0.88);
+    font-variation-settings: "opsz" 36;
+  }
+  .petition-text p + p { margin-top: 1em; }
+  .petition-text strong { color: var(--paper); font-weight: 600; }
+
+  .counter {
+    margin-top: 36px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(245, 237, 224, 0.25);
+  }
+  .counter-num {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 72px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--amber);
+    font-variation-settings: "opsz" 144;
+  }
+  .counter-label {
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: rgba(245, 237, 224, 0.7);
+    margin-top: 8px;
+  }
+
+  .pform {
+    background: var(--paper);
+    color: var(--ink);
+    padding: 40px 36px;
+    border-radius: 2px;
+  }
+  .pform h3 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 22px;
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+  .pform-redirect {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 22px;
+  }
+  .btn-scroll {
+    display: inline-block;
+    background: var(--amber-deep);
+    color: var(--paper);
+    padding: 13px 24px;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn-scroll:hover { background: var(--ink); }
+  .field {
+    margin-bottom: 20px;
+  }
+  .field label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 8px;
+  }
+  .field input {
+    width: 100%;
+    padding: 12px 0;
+    border: none;
+    border-bottom: 2px solid var(--ink);
+    background: transparent;
+    font-family: var(--serif);
+    font-size: 20px;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s;
+    font-variation-settings: "opsz" 36;
+  }
+  .field input:focus { border-bottom-color: var(--amber-deep); }
+  .field input::placeholder { color: var(--ink-faint); opacity: 0.5; }
+
+  .btn {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 16px 32px;
+    border: none;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 8px;
+  }
+  .btn:hover { background: var(--amber-deep); }
+  .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  .form-note {
+    font-size: 12px;
+    color: var(--ink-faint);
+    margin-top: 14px;
+    line-height: 1.5;
+  }
+
+  .form-success, .form-error {
+    margin-top: 16px;
+    padding: 14px 16px;
+    font-size: 14px;
+    line-height: 1.5;
+    border-left: 3px solid;
+  }
+  .form-success {
+    background: rgba(185, 130, 54, 0.08);
+    border-color: var(--amber-deep);
+    color: var(--ink);
+  }
+  .form-error {
+    background: rgba(140, 42, 42, 0.08);
+    border-color: var(--brick);
+    color: var(--brick);
+  }
+  .hidden { display: none; }
+
+  /* ===== Action ===== */
+  .action-section {
+    padding: 72px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .action-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 32px;
+    margin-top: 40px;
+  }
+  .action {
+    border-top: 2px solid var(--ink);
+    padding-top: 20px;
+  }
+  .action h3 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .action p {
+    font-size: 15px;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+  .action ul {
+    list-style: none;
+    font-size: 15px;
+  }
+  .action ul li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .action ul li:last-child { border-bottom: none; }
+  .action a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--amber);
+  }
+  .action a:hover { color: var(--amber-deep); }
+
+  /* ===== Footer ===== */
+  footer {
+    padding: 60px 0 40px;
+    background: var(--paper-deep);
+    color: var(--ink-soft);
+    font-size: 14px;
+  }
+  footer .container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 48px;
+  }
+  @media (max-width: 680px) {
+    footer .container { grid-template-columns: 1fr; }
+  }
+  footer h4 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 14px;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--ink);
+  }
+  footer p { line-height: 1.6; margin-bottom: 10px; font-size: 13px; }
+  footer a { color: var(--ink); border-bottom: 1px solid var(--amber); text-decoration: none; }
+  .fine-print {
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    font-size: 11px;
+    color: var(--ink-faint);
+    letter-spacing: 0.04em;
+    line-height: 1.6;
+  }
+
+  /* subtle reveal */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-title, .hero-sub, .hero-meta { animation: fadeUp 0.9s ease-out both; }
+  .hero-sub { animation-delay: 0.12s; }
+  .hero-meta { animation-delay: 0.22s; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="container masthead-inner">
+    <div class="wordmark">Save <em>the</em> Downtown Library</div>
+    <nav>
+      <a href="#stakes">Why</a>
+      <a href="#framing">Framing</a>
+      <a href="#timeline">Record</a>
+      <a href="#petition">Petition</a>
+      <a href="#action">Act</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <div class="kicker">A Duluth Civic Accountability Project</div>
+        <h1 class="hero-title">Keep the main library branch<br>in <em>the heart</em><br>of the city.</h1>
+        <p class="hero-sub">Mayor Reinert's administration is quietly exploring moving Duluth's Main Library four miles out of downtown. The Library Board was not briefed before staff toured the alternative site. This page is a public record of what's happening and why it matters.</p>
+        <div class="hero-meta">
+          <span>Building<strong>520 W. Superior St.</strong></span>
+          <span>Designed<strong>Gunnar Birkerts, 1980</strong></span>
+          <span>Annual visitors<strong>338,506</strong></span>
+        </div>
+      </div>
+      <aside class="hero-aside">
+        <!--
+          PHOTO: Hero image below points to a Wikimedia Commons photo of the
+          downtown Duluth Public Library (Birkerts building, 520 W. Superior St).
+          Before publishing live at savethedowntownlibrary.org you should:
+            (1) Confirm the license on the Wikimedia file page and record the
+                photographer's name + license (e.g., "Photo: [name] / Flickr, CC BY 2.0").
+            (2) Download the image and host it locally (e.g., /images/library.jpg)
+                rather than hotlinking Wikimedia. Update src and .photo-credit below.
+            (3) Alternative (best): commission or take an original photograph.
+                A civic campaign anchored in original photography reads as more
+                authentic than a repurposed file photo.
+          File URL:
+            https://commons.wikimedia.org/wiki/File:Duluth_Public_Library_-_Duluth,_Minnesota_(25072425050).jpg
+        -->
+        <figure class="hero-photo">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/5/56/Duluth_Public_Library_-_Duluth%2C_Minnesota_%2825072425050%29.jpg"
+            alt="The Duluth Public Library's modernist Main branch at 520 W. Superior Street, a low-slung cantilevered building designed by Gunnar Birkerts in 1980."
+            loading="lazy" />
+          <figcaption>
+            The Main Library at 520 W. Superior Street. Designed by Gunnar Birkerts, 1980.
+            <span class="photo-credit">Photo: Wikimedia Commons — verify license &amp; attribution before deploy.</span>
+          </figcaption>
+        </figure>
+
+        <div class="hero-sign" id="sign">
+          <div class="hero-sign-head">
+            <h3>Sign the petition</h3>
+            <div>
+              <span class="hero-count-num" id="heroCountNum">—</span>
+              <span class="hero-count-label">signed</span>
+            </div>
+          </div>
+          <div class="hero-progress">
+            <div class="hero-progress-track" aria-hidden="true">
+              <div class="hero-progress-fill" id="heroProgressFill"></div>
+            </div>
+            <div class="hero-progress-label">
+              <span id="heroProgressText">toward the goal</span>
+              <span class="hero-progress-goal" id="heroProgressGoal">Goal: 500</span>
+            </div>
+          </div>
+          <form id="heroForm" class="hero-form" novalidate>
+            <label for="heroName" class="sr-only">Your name</label>
+            <input type="text" id="heroName" name="name" required autocomplete="name" placeholder="Your name" />
+            <label for="heroEmail" class="sr-only">Email</label>
+            <input type="email" id="heroEmail" name="email" required autocomplete="email" placeholder="Email" />
+            <button type="submit" class="btn-amber" id="heroSubmitBtn">Add my name</button>
+            <div class="form-success hidden" id="heroFormSuccess">Thank you — your signature is recorded.</div>
+            <div class="form-error hidden" id="heroFormError"></div>
+          </form>
+          <p class="hero-sign-note">Only your name is published (first + last initial). Email is never shared.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="stakes" id="stakes">
+  <div class="container">
+    <div class="section-label">The Stakes</div>
+    <h2 class="section-title">The downtown library isn't just a building. It's <em>a civic commitment</em> the city has kept for 135 years.</h2>
+    <div class="prose">
+      <p>Duluth's first official library opened in 1890. The building at 520 W. Superior Street, designed by Gunnar Birkerts — the same architect who designed the Federal Reserve Bank of Minneapolis — has anchored downtown since 1980.</p>
+      <p>The Reinert administration now describes the block as a "residential tower" opportunity. In December 2025, city staff toured the Arrowpointe Building, a former UnitedHealthcare office four miles from downtown, as a possible new main-library home. The Library Board wasn't briefed first. The Library Foundation is months away from breaking ground on a $350,000 Children's Section renovation at the very building the administration is discussing vacating.</p>
+    </div>
+
+    <div class="stakes-grid">
+      <div class="stake">
+        <div class="num">680,215</div>
+        <h3>Items circulated in 2025</h3>
+        <p>System-wide physical circulation, up 9% from 2024. The Main Library accounts for more than 40% of that volume.</p>
+      </div>
+      <div class="stake">
+        <div class="num">$350,000</div>
+        <h3>Foundation fundraise in flight</h3>
+        <p>The Duluth Library Foundation has committed $230,000 of its $350,000 Children's Section renovation — construction set to begin fall 2026 at 520 W. Superior Street.</p>
+      </div>
+      <div class="stake">
+        <div class="num">0</div>
+        <h3>Library Board briefings before the Arrowpointe tour</h3>
+        <p>The December 2, 2025 Library Board minutes note "no updates" on the main library facility. Nine days later, staff were walking a relocation site.</p>
+      </div>
+      <div class="stake">
+        <div class="num">4<small>miles</small></div>
+        <h3>From Bayfront to the proposed site</h3>
+        <p>Arrowpointe sits on Rice Lake Road, a 10-minute drive from downtown — inaccessible to many library patrons without a car.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="framing-section" id="framing">
+  <div class="container">
+    <div class="section-label">Reading the Record</div>
+    <h2 class="section-title">Hermantown and Proctor <em>already pay</em>.</h2>
+
+    <div class="claim-box">
+      <div class="claim-label">The Mayor's framing</div>
+      <p class="claim-text">"One community provides that service for 135,000 people. The challenge for us is that only Duluthians pay for it."</p>
+      <div class="claim-cite">— Mayor Roger Reinert, July 2025 &amp; December 2025</div>
+    </div>
+
+    <div class="response-label">The Record</div>
+
+    <div class="prose">
+      <p>Duluth has been part of the Arrowhead Library System since 1965. So have Proctor, Hermantown, and every city and county in St. Louis County. Minnesota law (Minn. Stat. ch. 134) requires every public library in a regional system to provide <em>"free access to library services for all residents of the region without discrimination."</em> Cross-jurisdictional library use isn't a loophole. It's the architecture the state built on purpose.</p>
+
+      <p>Neighboring communities fund their own libraries and contribute through county levies. The state's Regional Library Basic System Support formula (Minn. Stat. § 134.355) redistributes aid based on population, square mileage, and equalized property value — by design, higher-tax-capacity cities like Duluth receive state reimbursement for the larger load they carry. Duluth already receives this money. It is not an unaddressed imbalance. It is how the system is supposed to work.</p>
+
+      <p>The Mayor's "regional district" pitch references no specific statutory mechanism. Minnesota has real statutory paths to form a regional library district — § 134.201 for districts with taxing authority, § 134.341 for joint agreements — and none have been invoked, filed, or studied. There is no proposal. No governance structure. No taxation mechanism. No filing with the Department of Education.</p>
+
+      <p>The framing does work the substance can't: it converts routine regional cooperation — designed by the legislature sixty years ago — into a grievance that justifies a different decision altogether, one about moving the Main Library out of downtown.</p>
+
+      <p>And the "one-third of cardholders are not residents" figure the Mayor cites is a registration count, not a usage count. The library has never published a breakdown of <em>actual</em> non-resident circulation, visits, or programming attendance. "Non-resident" also includes UMD and St. Scholastica students, North Shore seasonal residents, travelers, and anyone with a secondary address — not just commuters from Hermantown and Proctor. The claim being made on the data has never been shown from the data.</p>
+    </div>
+  </div>
+</section>
+
+<section class="timeline-section" id="timeline">
+  <div class="container">
+    <div class="section-label">The Record</div>
+    <h2 class="section-title">A public timeline, updated as the story develops.</h2>
+
+    <div class="timeline">
+
+      <div class="tl-entry">
+        <div class="tl-date">August 2023</div>
+        <h4>Prior administration plans downtown renovation</h4>
+        <p>Under Mayor Larson, the city council advances a $71–75 million plan to renovate the Main Library in place, incorporating the Workforce Center and addressing long-deferred building systems.</p>
+        <span class="tl-source">Source: Duluth News Tribune, Aug. 25, 2023</span>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-date">January 2024</div>
+        <h4>Mayor Reinert pivots the vision</h4>
+        <p>Shortly after taking office, Mayor Reinert tells the City Council the downtown library block should be redeveloped for "housing, commercial and retail" along with a smaller library footprint similar to the Mount Royal branch. He calls the Larson-era renovation plan too expensive.</p>
+        <span class="tl-source">Source: Northern News Now, Jan. 19, 2024</span>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-date">August 2025</div>
+        <h4>Library Foundation warns council against cuts</h4>
+        <p>Foundation director Erin Kreeger tells councilors the library is already on a "shoestring budget" and that further reductions will cost hours and services. Budget deficit for 2026 reported at $7.3 million.</p>
+        <span class="tl-source">Source: Duluth News Tribune, Aug. 26, 2025</span>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-date">December 2, 2025</div>
+        <h4>Library Board: "No updates"</h4>
+        <p>Under the standing "Main Library facility / regional library services district" agenda item, the Library Board is told only that a HUD grant proposal is paused pending mayoral approval. No mention of Arrowpointe.</p>
+        <span class="tl-source">Source: Duluth Public Library Board Minutes, Dec. 2, 2025</span>
+      </div>
+
+      <div class="tl-entry flag">
+        <div class="tl-date">December 11, 2025</div>
+        <h4>City staff tour Arrowpointe</h4>
+        <p>Library Services Manager Carla Powers and staff tour the Arrowpointe Building at 4316 Rice Lake Road as a potential new Main Library site. That same day, Powers emails the City Council describing the idea.</p>
+        <span class="tl-source">Source: Duluth News Tribune, Dec. 11, 2025; Star Tribune, Dec. 11, 2025</span>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-date">January 6, 2026</div>
+        <h4>Library Board first briefed</h4>
+        <p>Meeting minutes: <em>"Staff visited a facility up on the hill as a potential relocation of the Main Library. There are pros and cons to the location. Next steps are to work with a consultant to assess the feasibility of the space."</em> The board notes PPL department restructuring "is on pause."</p>
+        <span class="tl-source">Source: Library Board Minutes, Jan. 6, 2026</span>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-date">January 17, 2026</div>
+        <h4>Public pushback in print</h4>
+        <p>A Reader's View in the DNT calls Arrowpointe "a terrible idea" on access grounds, proposing the former Central High School site as a grander civic-library alternative.</p>
+        <span class="tl-source">Source: Duluth News Tribune, Jan. 17, 2026</span>
+      </div>
+
+      <div class="tl-entry flag">
+        <div class="tl-date">Late January 2026</div>
+        <h4>City Administrator departs</h4>
+        <p>Matt Staehling announces his return to St. Cloud effective Feb. 28. Karla Culhane is named Interim City Administrator. Within weeks, Property, Parks & Libraries Director Jim Filby Williams — the city's longstanding library advocate — is also out, replaced by Interim Director Erik Birkeland.</p>
+        <span class="tl-source">Source: City of Duluth press release, Jan. 30, 2026; Library Board Minutes, Feb. 3, 2026</span>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-date">February 3, 2026</div>
+        <h4>Public comment begins at Library Board</h4>
+        <p>A member of the public raises questions at the Library Board about "Duluth Public Library relocation and timeline." Consultant feasibility study reported as "in progress" and projected to wrap up mid-February.</p>
+        <span class="tl-source">Source: Library Board Minutes, Feb. 3, 2026</span>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-date">March 3, 2026</div>
+        <h4>Downtown-library advocates begin organizing</h4>
+        <p>The Friends of the Library report to the Library Board: <em>"Community member Gerri Williams is organizing a group of library supporters with the goal of keeping the Duluth Public Library in its current location in central downtown."</em></p>
+        <span class="tl-source">Source: Library Board Packet, March 2026</span>
+      </div>
+
+      <div class="tl-entry flag">
+        <div class="tl-date">March 24, 2026</div>
+        <h4>Library absent from State of the City</h4>
+        <p>Mayor Reinert's third State of the City Address is organized around his "Big Five Issues": housing, commercial tax growth, streets and utilities, downtown Duluth, and property taxes. The library is not mentioned. The administration signals that downtown Duluth's "future is residential," with capacity for "1,500 additional housing units." The speech is interrupted six times by protestors.</p>
+        <span class="tl-source">Source: WDIO, Fox21, Northern News Now, March 24–25, 2026</span>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-date">April 6, 2026</div>
+        <h4>Michigan Street entrance closes</h4>
+        <p>The city announces the permanent closure of the library's Michigan Street entrance. Framed as operational, but adds a note to the record.</p>
+        <span class="tl-source">Source: City of Duluth press release, March 31, 2026</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="petition-section" id="petition">
+  <div class="container">
+    <div class="section-label">The Petition</div>
+    <h2 class="section-title">Keep the Main Library <em>downtown</em>.</h2>
+
+    <div class="petition-grid">
+      <div class="petition-text">
+        <p><strong>To Mayor Reinert and the Duluth City Council:</strong></p>
+        <p>We, the undersigned residents and patrons of the City of Duluth, call on the City to preserve the Duluth Public Library's Main Library at 520 West Superior Street as the anchor of the library system and as an accessible civic space at the heart of downtown.</p>
+        <p>We ask the City to:</p>
+        <p>— <strong>Halt exploratory negotiations</strong> on any relocation of the Main Library;</p>
+        <p>— <strong>Release the consultant feasibility study</strong> in full and host at least one public hearing before any lease, sale, or disposition is placed on a council agenda;</p>
+        <p>— <strong>Commit to keeping the Main Library branch in its current location.</strong></p>
+
+        <div class="counter">
+          <div class="counter-num" id="signatureCount">—</div>
+          <div class="counter-label">People have signed</div>
+        </div>
+      </div>
+
+      <div class="pform">
+        <h3>Add your name</h3>
+        <p class="pform-redirect">The signature form lives at the top of the page — in the hero section, next to the photo of the library.</p>
+        <a href="#sign" class="btn btn-scroll">Go to sign form ↑</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="action-section" id="action">
+  <div class="container">
+    <div class="section-label">What You Can Do</div>
+    <h2 class="section-title">Signatures matter. <em>Direct contact</em> matters more.</h2>
+
+    <div class="action-grid">
+      <div class="action">
+        <h3>Email your councilor</h3>
+        <p>Two sentences in your own words beats a thousand form letters. Tell them you want the library to stay downtown and you want the feasibility study released.</p>
+        <ul>
+          <li><strong><a href="mailto:jjohnson@duluthmn.gov">Councilor Johnson (At-Large)</a></strong> — chairs Recreation, Libraries &amp; Authorities</li>
+          <li><a href="mailto:lnephew@duluthmn.gov">President Nephew (At-Large)</a></li>
+          <li><a href="mailto:jkennedy@duluthmn.gov">Vice President Kennedy (District 5)</a></li>
+          <li><a href="mailto:wdurrwachter@duluthmn.gov">Councilor Durrwachter (District 1)</a></li>
+          <li><a href="mailto:ddesotelle@duluthmn.gov">Councilor Desotelle (District 2)</a></li>
+          <li><a href="mailto:rrandorf@duluthmn.gov">Councilor Randorf (District 3)</a></li>
+          <li><a href="mailto:dclanaugh@duluthmn.gov">Councilor Clanaugh (District 4)</a></li>
+          <li><a href="mailto:aforsman@duluthmn.gov">Councilor Forsman (At-Large)</a></li>
+          <li><a href="mailto:ttomanek@duluthmn.gov">Councilor Tomanek (At-Large)</a></li>
+        </ul>
+      </div>
+
+      <div class="action">
+        <h3>Contact the Mayor</h3>
+        <p>Mayor Reinert ran on transparency. This is the moment to ask for it in writing.</p>
+        <ul>
+          <li><a href="mailto:mayor@duluthmn.gov">mayor@duluthmn.gov</a></li>
+          <li>Mayor's Office: (218) 730-5230</li>
+          <li>City Hall, Room 422<br>411 West First Street<br>Duluth, MN 55802</li>
+        </ul>
+      </div>
+
+      <div class="action">
+        <h3>Show up at the Library Board</h3>
+        <p>The Library Board meets the first Tuesday of the month at 4:30 PM. Public comment is the first order of business.</p>
+        <ul>
+          <li><strong>May 5, 2026</strong> — Main Library, Gold Room</li>
+          <li><strong>June 2, 2026</strong> — Main Library, Gold Room</li>
+          <li>520 W. Superior St.</li>
+        </ul>
+      </div>
+
+      <div class="action">
+        <h3>Support the library directly</h3>
+        <p>The Duluth Library Foundation is actively fundraising for the Downtown Children's Section at the current Main Library building. Join the Foundation — membership is a civic vote.</p>
+        <ul>
+          <li><a href="https://duluthlibraryfoundation.org/" target="_blank" rel="noopener">duluthlibraryfoundation.org</a></li>
+          <li><a href="https://friendsofdpl.com/" target="_blank" rel="noopener">Friends of the Duluth Public Library</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>
+      <h4>About this site</h4>
+      <p>Save the Downtown Library is a citizen-run record of the Reinert administration's exploration of relocating the Duluth Public Library out of downtown. It is not affiliated with the Duluth Public Library, the Duluth Library Foundation, the Friends of the Duluth Public Library, the City of Duluth, or the Library Board.</p>
+      <p>Tips, corrections, or documents: <a href="mailto:contact@savethedowntownlibrary.org">contact@savethedowntownlibrary.org</a></p>
+      <p class="fine-print">All sources linked. Timeline updated as the record develops. If any item is inaccurate, we will correct it and note the correction publicly.</p>
+    </div>
+    <div>
+      <h4>Related</h4>
+      <p><a href="https://ourparkourvote.org/" target="_blank" rel="noopener">Our Park, Our Vote →</a><br>A parallel Duluth citizens' initiative to protect the former Lester Park Golf Course.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /*
+   * PETITION BACKEND NOTES (FOR DEPLOYMENT)
+   * ----------------------------------------
+   * This artifact uses Claude's built-in persistent shared storage so the counter
+   * and signature list actually work inside the preview. THAT WILL NOT WORK ON THE
+   * LIVE SITE. To deploy savethedowntownlibrary.org on Netlify (your OPOV workflow):
+   *
+   * 1. Add `data-netlify="true" name="petition" netlify-honeypot="bot-field"`
+   *    attributes to the <form> tag above, and add a hidden input:
+   *    <input type="hidden" name="form-name" value="petition" />
+   *    Netlify will auto-capture all submissions — no backend code required.
+   *
+   * 2. Replace the submit handler below with a simple fetch() POST to the same URL
+   *    (Netlify handles it), or let the form submit normally.
+   *
+   * 3. For the live signature count, either:
+   *    (a) Display a static count you update periodically from the Netlify dashboard; OR
+   *    (b) Use the Netlify Forms API (requires a personal access token and a small
+   *        serverless function — I can scaffold this for you when you're ready).
+   *
+   * 4. Consider double opt-in (send a confirmation email) before counting a signature
+   *    as valid, if you expect adversarial submissions. Formspree and ConvertKit both
+   *    handle this out of the box if you'd rather not roll it yourself.
+   *
+   * For now — in this preview — everything below uses window.storage.
+   */
+
+  const form = document.getElementById('heroForm');
+  const nameInput = document.getElementById('heroName');
+  const emailInput = document.getElementById('heroEmail');
+  const successEl = document.getElementById('heroFormSuccess');
+  const errorEl = document.getElementById('heroFormError');
+  const submitBtn = document.getElementById('heroSubmitBtn');
+
+  // Two counters on page: hero top and petition section bottom. Keep them in sync.
+  const counters = [
+    document.getElementById('heroCountNum'),
+    document.getElementById('signatureCount')
+  ].filter(Boolean);
+
+  // Progress tracker
+  const GOAL = 500;  // Adjust as the campaign grows — bump to 1000 when you cross 400.
+  const progressFill = document.getElementById('heroProgressFill');
+  const progressText = document.getElementById('heroProgressText');
+  const progressGoal = document.getElementById('heroProgressGoal');
+
+  const SIG_KEY = 'petition-signatures';
+
+  function updateCounters(n) {
+    const label = Number(n).toLocaleString();
+    counters.forEach(el => { el.textContent = label; });
+
+    if (progressFill) {
+      const pct = Math.min(100, (n / GOAL) * 100);
+      progressFill.style.width = pct.toFixed(1) + '%';
+    }
+    if (progressText) {
+      if (n >= GOAL) {
+        progressText.textContent = 'Goal reached — keep going';
+      } else {
+        const remaining = GOAL - n;
+        progressText.textContent = `${remaining.toLocaleString()} to go`;
+      }
+    }
+    if (progressGoal) {
+      progressGoal.textContent = `Goal: ${GOAL.toLocaleString()}`;
+    }
+  }
+
+  async function loadCount() {
+    try {
+      const res = await window.storage.get(SIG_KEY, true);
+      const sigs = res ? JSON.parse(res.value) : [];
+      updateCounters(sigs.length);
+    } catch (e) {
+      updateCounters(0);
+    }
+  }
+
+  function showError(msg) {
+    errorEl.textContent = msg;
+    errorEl.classList.remove('hidden');
+    successEl.classList.add('hidden');
+  }
+
+  function clearMessages() {
+    errorEl.classList.add('hidden');
+    successEl.classList.add('hidden');
+  }
+
+  function validEmail(v) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    clearMessages();
+
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+
+    if (!name || name.length < 2) { showError('Please enter your full name.'); return; }
+    if (!validEmail(email)) { showError('Please enter a valid email address.'); return; }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Signing...';
+
+    try {
+      const res = await window.storage.get(SIG_KEY, true);
+      const sigs = res ? JSON.parse(res.value) : [];
+
+      // de-dupe by email (case-insensitive)
+      const lower = email.toLowerCase();
+      if (sigs.some(s => s.email && s.email.toLowerCase() === lower)) {
+        showError('This email has already signed. Thank you!');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Add my name';
+        return;
+      }
+
+      sigs.push({ name, email, ts: new Date().toISOString() });
+      await window.storage.set(SIG_KEY, JSON.stringify(sigs), true);
+
+      updateCounters(sigs.length);
+      successEl.classList.remove('hidden');
+      form.reset();
+    } catch (err) {
+      showError('Something went wrong. Please try again.');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Add my name';
+    }
+  });
+
+  loadCount();
+</script>
+
+</body>
+</html>
