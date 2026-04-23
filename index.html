@@ -241,6 +241,25 @@
     letter-spacing: -0.01em;
     color: var(--ink);
   }
+  .hero-sign-preview {
+    font-family: var(--serif);
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--ink-faint);
+    padding-bottom: 14px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .hero-sign-preview a {
+    color: var(--amber-deep);
+    text-decoration: none;
+    border-bottom: 1px solid var(--amber-deep);
+    white-space: nowrap;
+  }
+  .hero-sign-preview a:hover {
+    color: var(--ink);
+    border-bottom-color: var(--ink);
+  }
   .hero-count-num {
     font-family: var(--serif);
     font-weight: 600;
@@ -1210,6 +1229,9 @@
               <span class="hero-count-label">signed</span>
             </div>
           </div>
+          <p class="hero-sign-preview">
+            The City is quietly exploring moving the Main Library out of downtown. This petition asks the Mayor and Council to keep it downtown and to study the options publicly first. <a href="#petition">Read the full petition ↓</a>
+          </p>
           <div class="hero-progress">
             <div class="hero-progress-track" aria-hidden="true">
               <div class="hero-progress-fill" id="heroProgressFill"></div>
@@ -1468,13 +1490,6 @@
         <span class="tl-source">Source: Duluth News Tribune, Jan. 17, 2026</span>
       </div>
 
-      <div class="tl-entry flag">
-        <div class="tl-date">Late January 2026</div>
-        <h4>City Administrator departs</h4>
-        <p>Matt Staehling announces his return to St. Cloud effective Feb. 28. Karla Culhane is named Interim City Administrator. Within weeks, Property, Parks & Libraries Director Jim Filby Williams — the city's longstanding library advocate — is also out, replaced by Interim Director Erik Birkeland.</p>
-        <span class="tl-source">Source: City of Duluth press release, Jan. 30, 2026; Library Board Minutes, Feb. 3, 2026</span>
-      </div>
-
       <div class="tl-entry">
         <div class="tl-date">February 3, 2026</div>
         <h4>Public comment begins at Library Board</h4>
@@ -1582,11 +1597,12 @@
     <div class="petition-grid">
       <div class="petition-text">
         <p><strong>To Mayor Reinert and the Duluth City Council:</strong></p>
-        <p>We, the undersigned residents and patrons of the City of Duluth, call on the City to preserve the Duluth Public Library's Main Library at 520 West Superior Street as the anchor of the library system and as an accessible civic space at the heart of downtown.</p>
+        <p>We, the undersigned residents and patrons of the City of Duluth, call on the City to preserve the Duluth Public Library's Main Library as a full-service civic anchor within the heart of downtown Duluth.</p>
         <p>We ask the City to:</p>
-        <p>— <strong>Halt exploratory negotiations</strong> on any relocation of the Main Library;</p>
-        <p>— <strong>Release the consultant feasibility study</strong> in full and host at least one public hearing before any lease, sale, or disposition is placed on a council agenda;</p>
-        <p>— <strong>Commit to keeping the Main Library branch in its current location.</strong></p>
+        <p>— <strong>Halt exploratory negotiations</strong> on the Arrowpointe Building or any other relocation site four miles or more from downtown;</p>
+        <p>— <strong>Release the consultant feasibility study in full</strong> and host at least one public hearing before any lease, sale, or disposition is placed on a council agenda;</p>
+        <p>— <strong>Commission a comparative study of downtown options</strong> — including continued use or rebuild of 520 West Superior Street, and other sites within the downtown core — before making any relocation decision;</p>
+        <p>— <strong>Commit to keeping the Main Library as a public, city-owned civic building</strong> within walking distance of the populations it serves.</p>
 
         <div class="counter">
           <div class="counter-num" id="signatureCount">—</div>
@@ -1596,8 +1612,42 @@
 
       <div class="pform">
         <h3>Add your name</h3>
-        <p class="pform-redirect">The signature form lives at the top of the page — in the hero section, next to the photo of the library.</p>
-        <a href="#sign" class="btn btn-scroll">Go to sign form ↑</a>
+        <form
+          id="petitionForm"
+          class="hero-form"
+          name="petition"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          novalidate>
+          <input type="hidden" name="form-name" value="petition" />
+          <p class="sr-only" aria-hidden="true">
+            <label>Do not fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+          </p>
+          <label for="petitionName" class="sr-only">Your name</label>
+          <input type="text" id="petitionName" name="name" required autocomplete="name" placeholder="Your name" />
+          <label for="petitionEmail" class="sr-only">Email (optional)</label>
+          <input type="email" id="petitionEmail" name="email" autocomplete="email" placeholder="Email (optional)" />
+          <div class="field-check">
+            <label class="check-label" for="petitionPublic">
+              <input type="checkbox" id="petitionPublic" name="public" />
+              <span>Display my name publicly on the signers page</span>
+            </label>
+            <p class="check-help">Your name will appear on savethedowntownlibrary.org alongside others who've signed. Uncheck this box if you'd rather remain anonymous.</p>
+          </div>
+          <div class="field-check field-check--forum" id="petitionForumWrap" aria-hidden="true">
+            <label class="check-label" for="petitionForum">
+              <input type="checkbox" id="petitionForum" name="forum" />
+              <span>Join the organizers' community Discourse forum</span>
+            </label>
+            <p class="check-help">We'll email you an invite to savethedowntownlibrary.discourse.group — the forum where organizers post updates, plan actions, and talk through next steps. Your email is visible to other members when you post. Unsubscribe anytime.</p>
+          </div>
+          <button type="submit" class="btn-amber" id="petitionSubmitBtn">Add my name</button>
+          <div class="form-success hidden" id="petitionFormSuccess">Thank you — your signature is recorded.</div>
+          <div class="form-error hidden" id="petitionFormError"></div>
+        </form>
+        <p class="hero-sign-note">Your signature is private. Only the total count is public. Email is optional — if you share it, it's never published or sold, only used for occasional campaign updates.</p>
+        <a class="hero-see-signers" href="/signers.html">See who's signed publicly →</a>
       </div>
     </div>
   </div>
@@ -1673,25 +1723,15 @@
 </footer>
 
 <script>
-  const form = document.getElementById('heroForm');
-  const nameInput = document.getElementById('heroName');
-  const emailInput = document.getElementById('heroEmail');
-  const publicInput = document.getElementById('heroPublic');
-  const forumInput = document.getElementById('heroForum');
-  const forumWrap = document.getElementById('heroForumWrap');
-  const successEl = document.getElementById('heroFormSuccess');
-  const errorEl = document.getElementById('heroFormError');
-  const submitBtn = document.getElementById('heroSubmitBtn');
+  const GOAL = 12600;
+  const progressFill = document.getElementById('heroProgressFill');
+  const progressText = document.getElementById('heroProgressText');
+  const progressGoal = document.getElementById('heroProgressGoal');
 
   const counters = [
     document.getElementById('heroCountNum'),
     document.getElementById('signatureCount')
   ].filter(Boolean);
-
-  const GOAL = 12600;
-  const progressFill = document.getElementById('heroProgressFill');
-  const progressText = document.getElementById('heroProgressText');
-  const progressGoal = document.getElementById('heroProgressGoal');
 
   let localCount = 0;
 
@@ -1709,11 +1749,11 @@
         progressText.textContent = 'Goal reached — keep going';
       } else {
         const remaining = GOAL - n;
-        progressText.textContent = `${remaining.toLocaleString()} to go`;
+        progressText.textContent = remaining.toLocaleString() + ' to go';
       }
     }
     if (progressGoal) {
-      progressGoal.textContent = `Goal: ${GOAL.toLocaleString()}`;
+      progressGoal.textContent = 'Goal: ' + GOAL.toLocaleString();
     }
   }
 
@@ -1729,30 +1769,6 @@
     }
   }
 
-  function showError(msg) {
-    errorEl.textContent = msg;
-    errorEl.classList.remove('hidden');
-    successEl.classList.add('hidden');
-  }
-
-  function clearMessages() {
-    errorEl.classList.add('hidden');
-    successEl.classList.add('hidden');
-  }
-
-  function maybeShowForum() {
-    if (!forumWrap) return;
-    const v = emailInput.value.trim();
-    const showIt = v.length > 3 && validEmail(v);
-    forumWrap.classList.toggle('is-visible', showIt);
-    forumWrap.setAttribute('aria-hidden', showIt ? 'false' : 'true');
-    if (!showIt && forumInput) forumInput.checked = false;
-  }
-  if (emailInput) {
-    emailInput.addEventListener('input', maybeShowForum);
-    emailInput.addEventListener('blur', maybeShowForum);
-  }
-
   function validEmail(v) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
   }
@@ -1763,66 +1779,132 @@
       .join('&');
   }
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    clearMessages();
+  // Wire up a single form instance. Called twice — once for hero, once for petition.
+  function wireForm(config) {
+    const form = document.getElementById(config.formId);
+    if (!form) return;
 
-    const name = nameInput.value.trim();
-    const email = emailInput.value.trim();
-    const isPublic = publicInput && publicInput.checked;
-    const wantsForum = forumInput && forumInput.checked && email && validEmail(email);
+    const nameInput = document.getElementById(config.nameId);
+    const emailInput = document.getElementById(config.emailId);
+    const publicInput = document.getElementById(config.publicId);
+    const forumInput = document.getElementById(config.forumId);
+    const forumWrap = document.getElementById(config.forumWrapId);
+    const successEl = document.getElementById(config.successId);
+    const errorEl = document.getElementById(config.errorId);
+    const submitBtn = document.getElementById(config.submitBtnId);
 
-    if (!name || name.length < 2) { showError('Please enter your full name.'); return; }
-    if (email && !validEmail(email)) { showError('That email doesn\'t look right. Leave it blank or correct it.'); return; }
-
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Signing…';
-
-    try {
-      const payload = {
-        'form-name': 'petition',
-        'bot-field': '',
-        name: name,
-        email: email
-      };
-      if (isPublic) payload.public = 'on';
-      if (wantsForum) payload.forum = 'on';
-
-      const res = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encodeForm(payload)
-      });
-
-      if (!res.ok) throw new Error('submission failed: ' + res.status);
-
-      updateCounters(localCount + 1);
-
-      const linkText = isPublic
-        ? 'See your name on the signers page →'
-        : "See who's signed publicly →";
-      successEl.innerHTML =
-        'Thank you — your signature is recorded. ' +
-        '<a class="success-link" href="/signers.html">' + linkText + '</a>' +
-        '<div class="success-forum">' +
-          '<h4 class="success-forum-heading">Join the conversation</h4>' +
-          "<p class=\"success-forum-lede\">We're building a community of Duluthians who care about the downtown library. Come share your thoughts, hear from others, and stay up to date.</p>" +
-          '<a class="btn-amber-outline" href="https://savethedowntownlibrary.discourse.group" target="_blank" rel="noopener">Visit the community forum →</a>' +
-        '</div>';
-      successEl.classList.remove('hidden');
-
-      form.reset();
-      maybeShowForum();
-
-      setTimeout(loadCount, 4000);
-
-    } catch (err) {
-      console.error('[petition] submit failed:', err);
-      showError('Something went wrong. Please try again, or email us at contact@savethedowntownlibrary.org.');
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Add my name';
+    function showError(msg) {
+      errorEl.textContent = msg;
+      errorEl.classList.remove('hidden');
+      successEl.classList.add('hidden');
     }
+
+    function clearMessages() {
+      errorEl.classList.add('hidden');
+      successEl.classList.add('hidden');
+    }
+
+    function maybeShowForum() {
+      if (!forumWrap) return;
+      const v = emailInput.value.trim();
+      const showIt = v.length > 3 && validEmail(v);
+      forumWrap.classList.toggle('is-visible', showIt);
+      forumWrap.setAttribute('aria-hidden', showIt ? 'false' : 'true');
+      if (!showIt && forumInput) forumInput.checked = false;
+    }
+
+    if (emailInput) {
+      emailInput.addEventListener('input', maybeShowForum);
+      emailInput.addEventListener('blur', maybeShowForum);
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      clearMessages();
+
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+      const isPublic = publicInput && publicInput.checked;
+      const wantsForum = forumInput && forumInput.checked && email && validEmail(email);
+
+      if (!name || name.length < 2) { showError('Please enter your full name.'); return; }
+      if (email && !validEmail(email)) { showError('That email doesn\'t look right. Leave it blank or correct it.'); return; }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Signing…';
+
+      try {
+        const payload = {
+          'form-name': 'petition',
+          'bot-field': '',
+          name: name,
+          email: email
+        };
+        if (isPublic) payload.public = 'on';
+        if (wantsForum) payload.forum = 'on';
+
+        const res = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: encodeForm(payload)
+        });
+
+        if (!res.ok) throw new Error('submission failed: ' + res.status);
+
+        updateCounters(localCount + 1);
+
+        const linkText = isPublic
+          ? 'See your name on the signers page →'
+          : "See who's signed publicly →";
+        successEl.innerHTML =
+          'Thank you — your signature is recorded. ' +
+          '<a class="success-link" href="/signers.html">' + linkText + '</a>' +
+          '<div class="success-forum">' +
+            '<h4 class="success-forum-heading">Join the conversation</h4>' +
+            "<p class=\"success-forum-lede\">We're building a community of Duluthians who care about the downtown library. Come share your thoughts, hear from others, and stay up to date.</p>" +
+            '<a class="btn-amber-outline" href="https://savethedowntownlibrary.discourse.group" target="_blank" rel="noopener">Visit the community forum →</a>' +
+          '</div>';
+        successEl.classList.remove('hidden');
+
+        form.reset();
+        maybeShowForum();
+
+        setTimeout(loadCount, 4000);
+
+      } catch (err) {
+        console.error('[petition] submit failed:', err);
+        showError('Something went wrong. Please try again, or email us at contact@savethedowntownlibrary.org.');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Add my name';
+      }
+    });
+  }
+
+  // Wire the hero form
+  wireForm({
+    formId: 'heroForm',
+    nameId: 'heroName',
+    emailId: 'heroEmail',
+    publicId: 'heroPublic',
+    forumId: 'heroForum',
+    forumWrapId: 'heroForumWrap',
+    successId: 'heroFormSuccess',
+    errorId: 'heroFormError',
+    submitBtnId: 'heroSubmitBtn'
+  });
+
+  // Wire the petition-section form
+  wireForm({
+    formId: 'petitionForm',
+    nameId: 'petitionName',
+    emailId: 'petitionEmail',
+    publicId: 'petitionPublic',
+    forumId: 'petitionForum',
+    forumWrapId: 'petitionForumWrap',
+    successId: 'petitionFormSuccess',
+    errorId: 'petitionFormError',
+    submitBtnId: 'petitionSubmitBtn'
   });
 
   updateCounters(0);
