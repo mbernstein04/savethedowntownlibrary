@@ -1089,6 +1089,9 @@
   }
   .hidden { display: none; }
 
+  /* When the visitor has signed, collapse the form inputs and show only the success message. */
+  .hero-form.is-signed > *:not(.form-success) { display: none; }
+
   /* ===== Action ===== */
   .action-section {
     padding: 72px 0;
@@ -1856,7 +1859,7 @@
         const linkText = isPublic
           ? 'See your name on the signers page →'
           : "See who's signed publicly →";
-        successEl.innerHTML =
+        const successHtml =
           'Thank you — your signature is recorded. ' +
           '<a class="success-link" href="/signers.html">' + linkText + '</a>' +
           '<div class="success-forum">' +
@@ -1864,7 +1867,19 @@
             "<p class=\"success-forum-lede\">We're building a community of Duluthians who care about the downtown library. Come share your thoughts, hear from others, and stay up to date.</p>" +
             '<a class="btn-amber-outline" href="https://savethedowntownlibrary.discourse.group" target="_blank" rel="noopener">Visit the community forum →</a>' +
           '</div>';
-        successEl.classList.remove('hidden');
+
+        // Mark every petition form on the page as signed so the visitor isn't
+        // re-prompted to sign in the second form (or in the same form they just used).
+        document.querySelectorAll('.hero-form').forEach((f) => {
+          f.classList.add('is-signed');
+          const s = f.querySelector('.form-success');
+          if (s) {
+            s.innerHTML = successHtml;
+            s.classList.remove('hidden');
+          }
+          const e = f.querySelector('.form-error');
+          if (e) e.classList.add('hidden');
+        });
 
         form.reset();
         maybeShowForum();
