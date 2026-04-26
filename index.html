@@ -1779,8 +1779,40 @@
       .join('&');
   }
 
+  const SIGNED_KEY = 'savethedowntownlibrary.signed';
+  const FORM_CONFIGS = [];
+
+  function hasSigned() {
+    try { return localStorage.getItem(SIGNED_KEY) === '1'; }
+    catch (e) { return false; }
+  }
+
+  function markSigned() {
+    try { localStorage.setItem(SIGNED_KEY, '1'); }
+    catch (e) { /* storage unavailable; in-memory only */ }
+  }
+
+  function hideForm(config, opts) {
+    const form = document.getElementById(config.formId);
+    if (!form) return;
+    form.classList.add('hidden');
+    const note = form.nextElementSibling;
+    if (note && note.classList.contains('hero-sign-note')) {
+      note.classList.add('hidden');
+    }
+    const successEl = document.getElementById(config.successId);
+    if (!successEl) return;
+    if (!opts || !opts.preserveMessage) {
+      successEl.innerHTML =
+        "You've already signed the petition — thank you. " +
+        '<a class="success-link" href="/signers.html">See who\'s signed publicly →</a>';
+    }
+    successEl.classList.remove('hidden');
+  }
+
   // Wire up a single form instance. Called twice — once for hero, once for petition.
   function wireForm(config) {
+    FORM_CONFIGS.push(config);
     const form = document.getElementById(config.formId);
     if (!form) return;
 
@@ -1869,6 +1901,10 @@
         form.reset();
         maybeShowForum();
 
+        markSigned();
+        hideForm(config, { preserveMessage: true });
+        FORM_CONFIGS.forEach(c => { if (c !== config) hideForm(c); });
+
         setTimeout(loadCount, 4000);
 
       } catch (err) {
@@ -1906,6 +1942,10 @@
     errorId: 'petitionFormError',
     submitBtnId: 'petitionSubmitBtn'
   });
+
+  if (hasSigned()) {
+    FORM_CONFIGS.forEach(c => hideForm(c));
+  }
 
   updateCounters(0);
   loadCount();
