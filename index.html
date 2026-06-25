@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Save the Downtown Library — A Duluth Civic Record</title>
-<meta name="description" content="A citizen-run record of the Reinert administration's proposal to move the Duluth Public Library out of downtown. Timeline, petition, and ways to take action." />
+<meta name="description" content="A citizen-run record of how the Reinert administration came within a structural inspection of moving the Duluth Public Library out of downtown — and why a public process must govern any future decision." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,500&family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -572,6 +572,122 @@
     padding: 72px 0;
     background: var(--paper);
     border-bottom: 1px solid var(--line);
+  }
+
+  /* ===== Scrapped plan section ===== */
+  .scrapped-section {
+    padding: 72px 0;
+    background: var(--paper-warm);
+    border-bottom: 1px solid var(--line);
+  }
+  .scrapped-lede {
+    font-family: var(--serif);
+    font-size: clamp(19px, 2.2vw, 23px);
+    line-height: 1.5;
+    color: var(--ink);
+    max-width: 720px;
+    margin-bottom: 16px;
+    font-variation-settings: "opsz" 40;
+  }
+  .scrapped-lede em { color: var(--amber-deep); font-style: italic; }
+  .scrapped-lede strong { font-weight: 600; }
+  .scrapped-body {
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.62;
+    color: var(--ink-soft);
+    max-width: 720px;
+    margin-bottom: 16px;
+    font-variation-settings: "opsz" 28;
+  }
+  .scrapped-body strong { color: var(--ink); font-weight: 600; }
+  .scrapped-body em { color: var(--amber-deep); font-style: italic; }
+  .scrapped-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin: 40px 0;
+  }
+  @media (max-width: 760px) {
+    .scrapped-grid { grid-template-columns: 1fr; gap: 18px; }
+  }
+  .deal-card {
+    background: var(--paper);
+    border-top: 3px solid var(--amber-deep);
+    padding: 26px 26px 22px;
+  }
+  .deal-card-kicker {
+    font-family: var(--sans);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    margin-bottom: 14px;
+  }
+  .deal-card h3 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+    color: var(--ink);
+  }
+  .deal-card ul { list-style: none; padding: 0; margin: 0; }
+  .deal-card li {
+    font-family: var(--serif);
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    padding: 9px 0 9px 18px;
+    position: relative;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .deal-card li:last-child { border-bottom: none; }
+  .deal-card li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--amber-deep);
+  }
+  .deal-card li strong { color: var(--ink); font-weight: 600; }
+  .deal-card-source {
+    margin-top: 14px;
+    font-family: var(--sans);
+    font-size: 11.5px;
+    color: var(--ink-faint);
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+  }
+  .deal-card-source a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(185, 130, 54, 0.5);
+  }
+  .deal-card-source a:hover { color: var(--amber-deep); border-bottom-color: var(--amber-deep); }
+  .scrapped-pullquote {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(20px, 2.4vw, 27px);
+    line-height: 1.38;
+    color: var(--ink);
+    max-width: 720px;
+    border-left: 4px solid var(--brick);
+    padding: 8px 0 8px 26px;
+    margin: 36px 0;
+    font-variation-settings: "opsz" 48;
+  }
+  .scrapped-pullquote .attr {
+    display: block;
+    margin-top: 14px;
+    font-style: normal;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    color: var(--ink-faint);
   }
   .claim-box {
     background: var(--paper-deep);
@@ -1185,6 +1301,7 @@
     <div class="wordmark">Save <em>the</em> Downtown Library</div>
     <nav>
       <a href="#stakes">Why</a>
+      <a href="#scrapped">Scrapped</a>
       <a href="#access">Access</a>
       <a href="#timeline">Record</a>
       <a href="#framing">Framing</a>
@@ -1202,7 +1319,7 @@
       <div class="hero-text">
         <div class="kicker">A Duluth Civic Accountability Project</div>
         <h1 class="hero-title">Keep the main library branch<br>in <em>the heart</em><br>of the city.</h1>
-        <p class="hero-sub">Mayor Reinert's administration is quietly exploring moving Duluth's Main Library four miles out of downtown. The Library Board was not briefed before staff toured the alternative site. This page is a public record of what's happening and why it matters.</p>
+        <p class="hero-sub">Mayor Reinert's administration quietly explored moving Duluth's Main Library four miles out of downtown — to a leased second floor that, an engineer later found, couldn't bear the weight of the books. That plan is dead. But the administration got within a structural inspection of relocating a 135-year-old civic institution without ever briefing the Library Board or the public. This page is the record of how that happened, and why it can't happen again.</p>
         <div class="hero-meta">
           <span>Building<strong>520 W. Superior St.</strong></span>
           <span>Designed<strong>Gunnar Birkerts, 1980</strong></span>
@@ -1293,7 +1410,8 @@
     <h2 class="section-title">The downtown library isn't just a building. It's <em>a civic commitment</em> the city has kept for 135 years.</h2>
     <div class="prose">
       <p>Duluth's first official library opened in 1890. The building at 520 W. Superior Street, designed by Gunnar Birkerts — the same architect who designed the Federal Reserve Bank of Minneapolis — has anchored downtown since 1980.</p>
-      <p>The Reinert administration now describes the block as a "residential tower" opportunity. In December 2025, city staff toured the Arrowpointe Building, a privately-owned medical office complex on Rice Lake Road, four miles from downtown, as a possible new main-library home. The Library Board wasn't briefed first. The Library Foundation is months away from breaking ground on a $350,000 Children's Section renovation at the very building the administration is discussing vacating.</p>
+      <p>The Reinert administration describes the block as a "residential tower" opportunity. In December 2025, city staff toured the Arrowpointe Building, a privately-owned medical office complex on Rice Lake Road, four miles from downtown, as a possible new main-library home — eyeing roughly 22,000 square feet on the building's second floor. The Library Board wasn't briefed first. The plan only fell apart when a structural engineer determined that the second floor couldn't carry the load of a full library collection: the floor wasn't built to hold the weight of the books. Meanwhile, the Library Foundation was months from breaking ground on a $350,000 Children's Section renovation at the very building the administration was quietly preparing to vacate.</p>
+      <p>The Arrowpointe site is off the table. But the more important fact is that it ever got that far. A relocation that would have stripped a civic anchor out of downtown advanced to the point of an engineering inspection before the board that governs the library, or the public that funds it, was ever told. The site was stopped by a load calculation — not by process, not by transparency, not by anyone the city answers to.</p>
     </div>
 
     <div class="stakes-grid">
@@ -1313,11 +1431,78 @@
         <p>The December 2, 2025 Library Board minutes note "no updates" on the main library facility. Nine days later, staff were walking a relocation site.</p>
       </div>
       <div class="stake">
-        <div class="num">4<small>miles</small></div>
-        <h3>From Bayfront to the proposed site</h3>
-        <p>Arrowpointe sits on Rice Lake Road, a 10-minute drive from downtown — inaccessible to many library patrons without a car.</p>
+        <div class="num">2<small>floors up</small></div>
+        <h3>Where the books couldn't go</h3>
+        <p>The relocation targeted ~22,000 sq ft on Arrowpointe's second floor. A structural engineer found the floor couldn't bear the weight of a full library collection. The plan died there — on a load calculation, not a public decision.</p>
       </div>
     </div>
+  </div>
+</section>
+
+
+<section class="scrapped-section" id="scrapped">
+  <div class="container">
+    <div class="section-label">What Was Already On The Table</div>
+    <h2 class="section-title">Before Arrowpointe, there was a fully-funded plan to <em>rebuild downtown</em>. Reinert scrapped it.</h2>
+
+    <p class="scrapped-lede">The Arrowpointe scheme didn't emerge in a vacuum. It replaced a far more advanced plan the previous administration had spent two years and roughly $300,000 building — a plan to construct a new downtown library, with federal and state money already moving to pay for it.</p>
+
+    <p class="scrapped-body">Under Mayor Emily Larson, the city had committed to replacing the aging building at 520 W. Superior Street with a new <strong>~88,000-square-foot downtown facility</strong> that would also house a Workforce Development Center and, potentially, the Police Department's behavioral health unit and nonprofit tenants. The City Council and the Duluth Library Foundation jointly funded a year of community engagement and pre-design — surveys, open houses, focus groups, stakeholder interviews — with <strong>the Foundation paying half of the roughly $300,000 cost</strong>. The estimate for the building itself ran to about $72 million.</p>
+
+    <p class="scrapped-body">The reason it was a serious plan, and not a wish, is that the money was already in motion. The financing was structured to keep the local taxpayer share to a minimum, drawing on three sources at once:</p>
+
+    <div class="scrapped-grid">
+      <div class="deal-card">
+        <div class="deal-card-kicker">Leg 1 — Federal</div>
+        <h3>An earmark advancing through the U.S. Senate</h3>
+        <ul>
+          <li>In <strong>July 2023</strong>, the U.S. Senate Appropriations Committee passed legislation that <strong>included money for the library project</strong>, per a joint release from Sens. Klobuchar and Smith.</li>
+          <li>It awaited consideration by the full Senate. The pathway ran through Congressionally Directed Spending, which requires <strong>the city itself to be the applicant</strong>.</li>
+          <li>The administration also planned to tap additional federal funds — including American Rescue Plan dollars — meant for multipurpose civic projects.</li>
+        </ul>
+        <div class="deal-card-source">Source: <a href="https://www.startribune.com/duluth-proposes-new-72-million-downtown-library-if-it-gets-federal-and-state-help/600302959" target="_blank" rel="noopener">Star Tribune, Sept. 8, 2023</a></div>
+      </div>
+
+      <div class="deal-card">
+        <div class="deal-card-kicker">Leg 2 — State</div>
+        <h3>A 2024 bonding request, named a top priority</h3>
+        <ul>
+          <li>The city planned to ask the state for <strong>roughly half the cost</strong> in the 2024 legislative session. Larson named it <strong>one of her top bonding priorities</strong>.</li>
+          <li>A special library board meeting in December indicated the city could seek <strong>~$20 million in state bonding</strong>, with another <strong>~$20 million</strong> from fundraising, federal relief money, and redirected operating savings.</li>
+        </ul>
+        <div class="deal-card-source">Source: <a href="https://www.startribune.com/duluths-ore-boat-styled-library-could-see-redesign-new-building/600254128/" target="_blank" rel="noopener">Star Tribune, Feb. 24, 2023</a></div>
+      </div>
+
+      <div class="deal-card">
+        <div class="deal-card-kicker">Leg 3 — Local</div>
+        <h3>Foundation funds and redirected leases</h3>
+        <ul>
+          <li>The <strong>Duluth Library Foundation</strong> had already paid half of the ~$300,000 pre-design cost and was positioned to run a capital campaign for the building.</li>
+          <li>The city planned to <strong>redirect lease payments</strong> it was spending on scattered current spaces — including the Workforce Center — into the consolidated downtown facility.</li>
+        </ul>
+        <div class="deal-card-source">Source: <a href="https://www.duluthnewstribune.com/news/local/duluth-takes-first-steps-toward-library-renovation-with-150-000-investment" target="_blank" rel="noopener">Duluth News Tribune, Feb. 28, 2023</a></div>
+      </div>
+
+      <div class="deal-card">
+        <div class="deal-card-kicker">The reversal</div>
+        <h3>January 2024: a new mayor, a new direction</h3>
+        <ul>
+          <li>Weeks after defeating Larson, Reinert asked the council to <strong>"reconceptualize"</strong> the block as <strong>housing, commercial, and retail</strong>, with the library shrunk to a footprint like the Mount Royal branch.</li>
+          <li>He called the existing plan too expensive: <em>"$72 to $75 million is a huge ask."</em></li>
+          <li>The council pushed back. It <strong>unanimously</strong> signaled it didn't want the administration to turn its back on a new downtown facility.</li>
+        </ul>
+        <div class="deal-card-source">Source: <a href="https://www.northernnewsnow.com/2024/01/19/mayor-reinert-changes-citys-plan-duluth-public-library/" target="_blank" rel="noopener">Northern News Now, Jan. 19, 2024</a> · <a href="https://www.duluthnewstribune.com/news/local/duluth-mayor-wants-to-rethink-proposed-library-plan" target="_blank" rel="noopener">Duluth News Tribune, Jan. 23, 2024</a></div>
+      </div>
+    </div>
+
+    <p class="scrapped-pullquote">
+      "Years of study and kicking the library can down the road has proven very costly for the city. Soon Band-Aid fixes on the building could lead to costly and detrimental losses to the library."
+      <span class="attr">— Erin Kreeger, Executive Director, Duluth Library Foundation, to the City Council, January 2024</span>
+    </p>
+
+    <p class="scrapped-body">Reinert maintained — then and since — that he never intended to eliminate a downtown library presence, and that he wanted to build on the prior work while seeking state funding for a reimagined project. That is a fair characterization of his stated position, and the record reflects it. But the practical effect is not in dispute: <strong>the $72 million new-build plan, with its federal and state funding pathways structured around the city as applicant, did not move forward.</strong> The 2024 Minnesota bonding bill failed entirely. Duluth's library has not surfaced in the subsequent Klobuchar–Smith Duluth-area appropriations announcements. And two years later, the "reconceptualized" vision had become a tour of a leased medical-office floor four miles from downtown — a floor that, in the end, couldn't hold the books.</p>
+
+    <p class="scrapped-body">That is the sequence this page asks Duluthians to sit with: <em>a community had built a fundable plan to keep and rebuild its library downtown, and within weeks of an election it was set aside — not through a public vote on the merits, but through a change of administration.</em> Whatever one thinks of the cost, a decision of that magnitude deserved the public process it never got.</p>
   </div>
 </section>
 
@@ -1327,7 +1512,7 @@
     <div class="section-label">Access</div>
     <h2 class="section-title">Who the Main Library is <em>for</em>.</h2>
 
-    <p class="access-intro">A library's location isn't neutral. It decides who can walk in the door, and who can't. The choice between 520 W. Superior Street and 4316 Rice Lake Road is not a choice about square footage or parking — it's a choice about <em>whom the library serves</em>.</p>
+    <p class="access-intro">A library's location isn't neutral. It decides who can walk in the door, and who can't. The relocation the administration nearly carried out — from 520 W. Superior Street to a leased second floor at 4316 Rice Lake Road — was never a choice about square footage or parking. It was a choice about <em>whom the library serves</em>. Here is what the city was prepared to trade away, and what stopped it.</p>
 
     <div class="access-grid">
       <div class="access-card current">
@@ -1345,29 +1530,30 @@
       </div>
 
       <div class="access-card proposed">
-        <div class="access-card-kicker">Proposed location</div>
+        <div class="access-card-kicker">The rejected site</div>
         <h3>The Arrowpointe Building</h3>
-        <div class="access-card-address">4316 Rice Lake Road, upper hillside</div>
+        <div class="access-card-address">4316 Rice Lake Road, upper hillside — second floor</div>
         <ul>
-          <li><strong>A fraction of the current footprint.</strong> The library would lease ~22,000 sq ft — roughly <strong>29% of the current Main Library's ~75,000 sq ft</strong>. Even the 2015 MSR study's already-rejected "reduced" option was 50,600 sq ft; Arrowpointe is 44% of <em>that</em>. The 2015 consultants explicitly rejected the reduced option as requiring "a much deeper cut in print collection holdings."</li>
-          <li><strong>A tenant in a medical office complex.</strong> The 170,000 sq ft building houses UnitedHealthcare (top floor), Arrowhead Surgery Center, Northern Neurosurgery &amp; Spine, Dermatology Duluth, Northland Plastic Surgery, Retina Consultants of Minnesota, In Motion Therapy, the United Way, and a café. The library would occupy the remaining available space alongside ten other tenants.</li>
+          <li><strong>The floor couldn't hold the books.</strong> The plan targeted ~22,000 sq ft on the second floor. A structural engineer found the floor was not built to bear the weight of a full library collection — the finding that ultimately killed the relocation. Everything below is what the administration was willing to accept <em>before</em> that engineer was ever consulted.</li>
+          <li><strong>A fraction of any serious proposal.</strong> That ~22,000 sq ft is well under a third of the <strong>75,000 sq ft</strong> the 2015 MSR study recommended for a new Main Library, and roughly a quarter of the <strong>~88,000 sq ft</strong> the 2023 Larson plan envisioned. Even the 2015 study's already-<em>rejected</em> "reduced" option was 50,600 sq ft — and Arrowpointe was just 44% of <em>that</em>. The consultants rejected the reduced option as requiring "a much deeper cut in print collection holdings."</li>
+          <li><strong>A tenant in a medical office complex.</strong> The 170,000 sq ft building houses UnitedHealthcare (top floor), Arrowhead Surgery Center, Northern Neurosurgery &amp; Spine, Dermatology Duluth, Northland Plastic Surgery, Retina Consultants of Minnesota, In Motion Therapy, the United Way, and a café. The library would have occupied the remaining available space alongside ten other tenants.</li>
           <li><strong>Limited bus service.</strong> The nearest DTA route runs infrequently and does not connect cleanly to the west-side neighborhoods.</li>
           <li><strong>~4.5 miles from CHUM</strong> and downtown shelter and social services.</li>
           <li><strong>No skyway, no adjacent civic buildings, no walkable surrounding district.</strong></li>
-          <li><strong>Car-dependent.</strong> The site is designed to be reached by driving. For Duluthians without a car — a population heavily overlapping with those most reliant on free public library services — it is effectively inaccessible.</li>
-          <li><strong>Privately owned.</strong> The building is owned by Duluth United LLC, a Michigan-based investor group, and managed by Duluth-based Titanium Partners (Brian Forcier). The city would become a tenant — paying rent to private landlords in perpetuity — rather than owning a public civic asset.</li>
+          <li><strong>Car-dependent.</strong> The site is designed to be reached by driving. For Duluthians without a car — a population heavily overlapping with those most reliant on free public library services — it would have been effectively inaccessible.</li>
+          <li><strong>Privately owned.</strong> The building is owned by Duluth United LLC, a Michigan-based investor group, and managed by Duluth-based Titanium Partners (Brian Forcier). The city would have become a tenant — paying rent to private landlords in perpetuity — rather than owning a public civic asset.</li>
         </ul>
       </div>
     </div>
 
     <div class="access-coda">
-      <p>The population that depends most heavily on the Main Library — low-income Duluthians, unhoused Duluthians, people without cars, immigrants, people who need warmth, bathrooms, public computers, internet access, and human help navigating government systems — <strong>lives in the neighborhoods within walking or busing distance of 520 W. Superior Street</strong>. A library four miles out on Rice Lake Road is a library for people who already have keys to a car.</p>
+      <p>The population that depends most heavily on the Main Library — low-income Duluthians, unhoused Duluthians, people without cars, immigrants, people who need warmth, bathrooms, public computers, internet access, and human help navigating government systems — <strong>lives in the neighborhoods within walking or busing distance of 520 W. Superior Street</strong>. A library four miles out on Rice Lake Road would have been a library for people who already have keys to a car.</p>
 
       <p>The City of Duluth's own 2016 Housing Indicator Report documented that the western and central neighborhoods — the ones the Main Library is built to serve — contain <strong>64% of Duluthians with incomes below the poverty line</strong> and <strong>60% of Duluthians with a disability</strong>, despite housing only 45% of the population. These are not abstractions. They are the patrons who walk into the Main Library every day.</p>
 
       <p>The last time the city studied this question — in 2015, with public input — the consultants' recommendation was to build a new Main Library <em>closer</em> to the heart of downtown, not further away. Sixty-three of the hundred public comments endorsed that option. None proposed a suburban commercial site.</p>
 
-      <p>Moving the library out of downtown is not neutral. It is a decision about who the civic commons is for.</p>
+      <p>Arrowpointe is finished. The instinct that produced it is not. The administration was prepared to accept every trade-off on this page — a quarter of the space, a private landlord, a car-only location, the loss of a city-owned civic asset — and the only thing that stopped it was a number on an engineer's report. The next site the administration explores may have a floor strong enough to hold the books. The question this page exists to answer is whether anyone will tell the public before it does.</p>
     </div>
   </div>
 </section>
@@ -1413,16 +1599,16 @@
         <div class="tl-date">August 2023</div>
         <h4>Federal funding advances for $71–72M downtown library</h4>
         <p>Under Mayor Larson, the city advances a $71–72 million plan to rebuild the Main Library at 520 W. Superior Street — incorporating the Workforce Center and replacing the failing 1980 building systems. Property, Parks &amp; Libraries Director Jim Filby Williams: <em>"All of the building's major systems are significantly beyond their lifespan and require replacement — the roof, the walls, the windows, the HVAC, the elevators."</em></p>
-        <p>The funding plan has three legs in motion simultaneously: a federal appropriation moving through the U.S. Senate Appropriations Committee (championed by Sens. Klobuchar and Smith), a state bonding request being prepared for the 2024 Minnesota legislative session — which Larson names one of her top bonding priorities — and local matching funds from the Duluth Library Foundation and redirected lease payments. The city aims to keep the local taxpayer contribution "to a minimum."</p>
+        <p>The funding plan has three legs in motion simultaneously: a federal appropriation moving through the U.S. Senate Appropriations Committee (championed by Sens. Klobuchar and Smith), a state bonding request being prepared for the 2024 Minnesota legislative session — which Larson names one of her top bonding priorities — and local matching funds from the Duluth Library Foundation and redirected lease payments. The Foundation had already paid half of the roughly $300,000 community-engagement and pre-design cost. The city aims to keep the local taxpayer contribution "to a minimum."</p>
         <span class="tl-source">Source: <a href="https://www.startribune.com/duluth-proposes-new-72-million-downtown-library-if-it-gets-federal-and-state-help/600302959" target="_blank" rel="noopener">Star Tribune, Sept. 8, 2023</a> · <a href="https://www.northernnewsnow.com/2023/08/25/city-leaders-push-71-million-replace-downtown-duluth-library/" target="_blank" rel="noopener">Northern News Now, Aug. 25, 2023</a></span>
       </div>
 
       <div class="tl-entry flag">
         <div class="tl-date">January 2024</div>
-        <h4>Mayor Reinert abandons the downtown replacement plan</h4>
-        <p>Within weeks of taking office, Mayor Reinert tells the City Council the downtown library block should instead be redeveloped for "housing, commercial and retail," with the library reduced to a smaller footprint similar to the Mount Royal branch. He calls the Larson-era renovation plan too expensive.</p>
-        <p>The federal and state funding pathways that had been moving in 2023 required the city to be the applicant. With the administration no longer pursuing the downtown replacement, those pathways went dormant. The Duluth library has not appeared in the subsequent Klobuchar–Smith Duluth-area appropriations announcements for FY2024 or FY2025. The 2024 Minnesota bonding bill failed entirely. No Duluth library project has been included in the state bonding requests that followed.</p>
-        <span class="tl-source">Source: <a href="https://www.northernnewsnow.com/2024/01/19/" target="_blank" rel="noopener">Northern News Now, Jan. 19, 2024</a></span>
+        <h4>Mayor Reinert sets aside the downtown replacement plan</h4>
+        <p>Within weeks of taking office, Mayor Reinert asks the City Council to "reconceptualize" the downtown library block as "housing, commercial and retail," with the library reduced to a smaller footprint similar to the Mount Royal branch. He calls the Larson-era plan too expensive — <em>"$72 to $75 million is a huge ask"</em> — while insisting he remains committed to a downtown library presence. The council pushes back, unanimously signaling it does not want the administration to turn its back on a new downtown facility.</p>
+        <p>The federal and state funding pathways that had been moving in 2023 required the city to be the applicant for the project as scoped. With the administration stepping back to revisit the plan, that momentum stalled. The 2024 Minnesota bonding bill failed entirely. The Duluth library has not appeared in the subsequent Klobuchar–Smith Duluth-area appropriations announcements, and no Duluth library project has surfaced in the state bonding requests that followed.</p>
+        <span class="tl-source">Source: <a href="https://www.northernnewsnow.com/2024/01/19/mayor-reinert-changes-citys-plan-duluth-public-library/" target="_blank" rel="noopener">Northern News Now, Jan. 19, 2024</a> · <a href="https://www.duluthnewstribune.com/news/local/duluth-mayor-wants-to-rethink-proposed-library-plan" target="_blank" rel="noopener">Duluth News Tribune, Jan. 23, 2024</a></span>
       </div>
 
       <div class="tl-entry">
@@ -1518,6 +1704,14 @@
         <span class="tl-source">Source: City of Duluth press release, March 31, 2026</span>
       </div>
 
+      <div class="tl-entry flag">
+        <div class="tl-date">Spring 2026</div>
+        <h4>Engineer's finding ends the Arrowpointe plan</h4>
+        <p>The consultant feasibility study reaches its conclusion: a structural engineer determines that Arrowpointe's second floor — the ~22,000 sq ft the city had been eyeing for the Main Library — cannot bear the weight of a full library collection. Books, shelving, and patrons are heavy; the floor was built for medical-office loads, not stacks. The relocation is abandoned.</p>
+        <p>The site is off the table. The pattern that produced it is not. The administration moved a 135-year-old civic institution to the brink of relocation — touring the site, briefing the council by email, commissioning a feasibility study — and the public learned the full picture only because the building physically could not hold the library. No public hearing was held. No comparative study of downtown options was commissioned. The decision was reversed by a load calculation, not by the process a civic decision of this size demands.</p>
+        <span class="tl-source">Source: Consultant feasibility study; Duluth Public Library Board minutes, spring 2026</span>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1549,8 +1743,8 @@
     <h2 class="section-title">What should happen <em>instead</em>.</h2>
 
     <div class="ways-intro">
-      <p>The case against Arrowpointe is not a case against investing in the library. The building at 520 W. Superior Street needs work — Ameresco, MSR, and city staff have said so consistently since 2014. The question isn't whether to act. It's how to act without abandoning downtown.</p>
-      <p>None of the options below is new. Each was on the table during the 2014–2015 planning process, or has been used successfully by peer cities since. The Reinert administration inherited them when it took office in January 2024. It chose something different.</p>
+      <p>Arrowpointe is dead, but the problem it was meant to solve is not. The building at 520 W. Superior Street needs work — Ameresco, MSR, and city staff have said so consistently since 2014. The question was never whether to act. It's how to act without abandoning downtown — and how to make the decision in the open, which is exactly what didn't happen the first time.</p>
+      <p>None of the options below is new. Each was on the table during the 2014–2015 planning process, or has been used successfully by peer cities since. The Reinert administration inherited them when it took office in January 2024. It reached past all of them for a leased medical-office floor — and got within an engineer's report of moving the library there before anyone outside the administration could weigh in.</p>
     </div>
 
     <div class="ways-grid">
@@ -1584,7 +1778,7 @@
     </div>
 
     <div class="ways-coda">
-      <p>The common thread is civic ownership. In every option above, the people of Duluth continue to own their library — the land, the building, the decision about whether to keep, redevelop, or expand. The Arrowpointe model alone sets that aside. A leased space in a privately-owned medical center cannot be the civic anchor downtown has been since 1902.</p>
+      <p>The common thread is civic ownership, decided in public. In every option above, the people of Duluth continue to own their library — the land, the building, the decision about whether to keep, redevelop, or expand. The Arrowpointe model alone set that aside: a leased space in a privately-owned medical center, chosen behind closed doors. It cannot be the civic anchor downtown has been since 1902 — and the way it was nearly chosen is reason enough to insist the next decision be made differently.</p>
     </div>
   </div>
 </section>
@@ -1597,10 +1791,11 @@
     <div class="petition-grid">
       <div class="petition-text">
         <p><strong>To Mayor Reinert and the Duluth City Council:</strong></p>
-        <p>We, the undersigned residents and patrons of the City of Duluth, call on the City to preserve the Duluth Public Library's Main Library as a full-service civic anchor within the heart of downtown Duluth.</p>
+        <p>We, the undersigned residents and patrons of the City of Duluth, note that the Arrowpointe relocation collapsed only because a structural engineer found the building could not physically hold the library — not because the City chose to keep the Main Library downtown. We call on the City to preserve the Duluth Public Library's Main Library as a full-service civic anchor within the heart of downtown Duluth, and to make any future siting decision in the open.</p>
         <p>We ask the City to:</p>
-        <p>— <strong>Halt exploratory negotiations</strong> on the Arrowpointe Building or any other relocation site four miles or more from downtown;</p>
-        <p>— <strong>Release the consultant feasibility study in full</strong> and host at least one public hearing before any lease, sale, or disposition is placed on a council agenda;</p>
+        <p>— <strong>Rule out any relocation site four miles or more from downtown</strong>, and confirm in writing that no further out-of-downtown sites are under exploration;</p>
+        <p>— <strong>Release the Arrowpointe feasibility study in full</strong>, including the structural findings, so the public can see exactly how far this plan advanced before it was disclosed;</p>
+        <p>— <strong>Commit that any future siting decision will begin with a public hearing</strong>, before any site tour, lease, sale, or disposition is placed on a council agenda or pursued by staff;</p>
         <p>— <strong>Commission a comparative study of downtown options</strong> — including continued use or rebuild of 520 West Superior Street, and other sites within the downtown core — before making any relocation decision;</p>
         <p>— <strong>Commit to keeping the Main Library as a public, city-owned civic building</strong> within walking distance of the populations it serves.</p>
 
@@ -1711,7 +1906,7 @@
   <div class="container">
     <div>
       <h4>About this site</h4>
-      <p>Save the Downtown Library is a citizen-run record of the Reinert administration's exploration of relocating the Duluth Public Library out of downtown. It is not affiliated with the Duluth Public Library, the Duluth Library Foundation, the Friends of the Duluth Public Library, the City of Duluth, or the Library Board.</p>
+      <p>Save the Downtown Library is a citizen-run record of the Reinert administration's near-relocation of the Duluth Public Library out of downtown — a plan that advanced to a structural inspection before it was disclosed, and collapsed only when the building proved unable to hold the collection. It is not affiliated with the Duluth Public Library, the Duluth Library Foundation, the Friends of the Duluth Public Library, the City of Duluth, or the Library Board.</p>
       <p>Tips, corrections, or documents: <a href="mailto:contact@savethedowntownlibrary.org">contact@savethedowntownlibrary.org</a></p>
       <p class="fine-print">All sources linked. Timeline updated as the record develops. If any item is inaccurate, we will correct it and note the correction publicly.</p>
     </div>
