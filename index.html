@@ -1241,6 +1241,19 @@
     border-bottom: 1px solid var(--line-soft);
   }
   .action ul li:last-child { border-bottom: none; }
+  .next-tag {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 1px 8px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--amber-deep);
+    background: var(--paper-warm);
+    border-radius: 999px;
+    vertical-align: middle;
+  }
   .action a {
     color: var(--ink);
     text-decoration: none;
@@ -1883,10 +1896,9 @@
       <div class="action">
         <h3>Show up at the Library Board</h3>
         <p>The Library Board meets the first Tuesday of the month at 4:30 PM. Public comment is the first order of business.</p>
-        <ul>
-          <li><strong>May 5, 2026</strong> — Main Library, Gold Room</li>
-          <li><strong>June 2, 2026</strong> — Main Library, Gold Room</li>
-          <li>520 W. Superior St.</li>
+        <ul id="boardMeetings" data-meeting-location="Main Library, Gold Room" data-meeting-address="520 W. Superior St.">
+          <li>Next meeting: first Tuesday of the month, 4:30 PM</li>
+          <li>Main Library, Gold Room — 520 W. Superior St.</li>
         </ul>
       </div>
 
@@ -2146,6 +2158,56 @@
   loadCount();
 
   setInterval(loadCount, 60000);
+
+  // Render upcoming Library Board meetings (first Tuesday of each month, 4:30 PM).
+  // Computed at page load so the list is always current and never shows a past date.
+  function renderBoardMeetings() {
+    const list = document.getElementById('boardMeetings');
+    if (!list) return;
+
+    const location = list.getAttribute('data-meeting-location') || '';
+    const address = list.getAttribute('data-meeting-address') || '';
+
+    // First Tuesday of a given year/month (month is 0-indexed).
+    function firstTuesday(year, month) {
+      const d = new Date(year, month, 1);
+      // 2 === Tuesday. Offset from the 1st to the first Tuesday.
+      const offset = (2 - d.getDay() + 7) % 7;
+      return new Date(year, month, 1 + offset);
+    }
+
+    // A meeting is still "current" through the end of its scheduled day.
+    const now = new Date();
+    const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+    const meetings = [];
+    const COUNT = 3; // show the next few meetings
+    let year = now.getFullYear();
+    let month = now.getMonth();
+    while (meetings.length < COUNT) {
+      const mtg = firstTuesday(year, month);
+      if (mtg >= todayStart) meetings.push(mtg);
+      month += 1;
+      if (month > 11) { month = 0; year += 1; }
+    }
+
+    const fmt = new Intl.DateTimeFormat('en-US', {
+      year: 'numeric', month: 'long', day: 'numeric'
+    });
+
+    const items = meetings.map(function (m, i) {
+      const label = fmt.format(m);
+      const tail = location ? ' — ' + location : '';
+      return i === 0
+        ? '<li><strong>' + label + '</strong>' + tail + ' <span class="next-tag">next meeting</span></li>'
+        : '<li><strong>' + label + '</strong>' + tail + '</li>';
+    });
+    if (address) items.push('<li>' + address + '</li>');
+
+    list.innerHTML = items.join('');
+  }
+
+  renderBoardMeetings();
 </script>
 
 </body>
