@@ -574,6 +574,86 @@
     border-bottom: 1px solid var(--line);
   }
 
+  /* ===== October 2026 update section ===== */
+  .update-section {
+    padding: 72px 0;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+  }
+  .update-section h3 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(22px, 2.6vw, 28px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    max-width: 720px;
+    margin: 40px 0 14px;
+  }
+  .update-section .scrapped-body a,
+  .update-section .scrapped-lede a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(185, 130, 54, 0.6);
+  }
+  .update-section .scrapped-body a:hover,
+  .update-section .scrapped-lede a:hover { color: var(--amber-deep); border-bottom-color: var(--amber-deep); }
+  .update-list {
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.62;
+    color: var(--ink-soft);
+    max-width: 720px;
+    margin: 0 0 16px 22px;
+    padding: 0;
+    font-variation-settings: "opsz" 28;
+  }
+  .update-list li { margin-bottom: 10px; }
+  .update-list strong { color: var(--ink); font-weight: 600; }
+  .update-list a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(185, 130, 54, 0.6);
+  }
+  .update-list a:hover { color: var(--amber-deep); border-bottom-color: var(--amber-deep); }
+  .update-history {
+    max-width: 720px;
+    margin: 20px 0 8px;
+  }
+  .update-history .hist-item {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 18px;
+    padding: 14px 0;
+    border-top: 1px solid var(--line);
+  }
+  .update-history .hist-item:last-child { border-bottom: 1px solid var(--line); }
+  .update-history .hist-year {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    padding-top: 4px;
+  }
+  .update-history .hist-body {
+    font-family: var(--serif);
+    font-size: 16.5px;
+    line-height: 1.58;
+    color: var(--ink-soft);
+    font-variation-settings: "opsz" 28;
+  }
+  .update-history .hist-body strong { color: var(--ink); font-weight: 600; }
+  .update-history .hist-body a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(185, 130, 54, 0.6);
+  }
+  .update-history .hist-body a:hover { color: var(--amber-deep); border-bottom-color: var(--amber-deep); }
+  @media (max-width: 640px) {
+    .update-history .hist-item { grid-template-columns: 1fr; gap: 6px; }
+  }
+
   /* ===== Scrapped plan section ===== */
   .scrapped-section {
     padding: 72px 0;
@@ -1300,6 +1380,7 @@
   <div class="container masthead-inner">
     <div class="wordmark">Save <em>the</em> Downtown Library</div>
     <nav>
+      <a href="#update">Update</a>
       <a href="#stakes">Why</a>
       <a href="#scrapped">Scrapped</a>
       <a href="#access">Access</a>
@@ -1404,6 +1485,79 @@
   </div>
 </section>
 
+<section class="update-section" id="update">
+  <div class="container">
+    <div class="section-label">Update — October 2026</div>
+    <h2 class="section-title">The city is studying the library again. It's the <em>third study</em> in twelve years.</h2>
+
+    <p class="scrapped-lede">On August 24 the City Council accepted $1.75 million from the U.S. Department of Housing and Urban Development to plan the future of library services in Duluth. On September 1 the Library Board was told that the city's property director and the library manager are "finalizing the work plan" and that the next step is "to start writing an RFP for study." No timeline was given. The board met again October 6; those minutes aren't posted yet.</p>
+    <div class="deal-card-source">Sources: <a href="docs/26-0731R-resolution.pdf" target="_blank" rel="noopener">Resolution 26-0731R</a> (adopted Aug. 24, 2026) · <a href="docs/26-0731R-cover-memo.pdf" target="_blank" rel="noopener">Cover memo</a> · <a href="docs/library-board-minutes-2026-09-01.pdf" target="_blank" rel="noopener">Library Board minutes, Sept. 1, 2026</a></div>
+
+    <p class="scrapped-body" style="margin-top:24px">That money has a history, and so does the study.</p>
+
+    <h3>Where the money came from</h3>
+    <p class="scrapped-body">The $1.75 million is a congressional earmark in the fiscal year 2024 federal budget, requested by Senators Klobuchar and Smith. The Senate Appropriations Committee's <a href="https://www.appropriations.senate.gov/imo/media/doc/fy24_thud_cds.pdf" target="_blank" rel="noopener">FY2024 THUD earmark table</a> lists it under HUD's Community Development Fund as <strong>"City of Duluth — Center of Social Innovation Development — $1,750,000 — Klobuchar, Smith,"</strong> and the city's own resolution deposits the money into an account labeled "center for social innovation, 2024 Housing and Urban Development Grant." The city's memo says the award "was authorized by the Fiscal Year 2024 Consolidated Appropriations Act."</p>
+    <p class="scrapped-body">Earmark requests for fiscal 2024 were made in 2023, under Mayor Larson. That February the city and the Library Foundation <a href="https://duluthmn.gov/web-subscriptions/View-press-release/?prid=7286" target="_blank" rel="noopener">announced</a> a "community-informed predesign for conversion of the Downtown Library" into a "multi-purpose, regional community service center," with the Workforce Center co-located inside it. By that summer it was a proposal for a new 82,000-square-foot library downtown, with a regional workforce development center and police units, at about $72 million, with half to come from state bonding and construction to start in summer 2025 — and the Senate Appropriations Committee had passed a bill with money for it: the $1,750,000 now funding the study (<a href="https://www.startribune.com/duluth-proposes-new-72-million-downtown-library-if-it-gets-federal-and-state-help/600302959" target="_blank" rel="noopener">Star Tribune, Sept. 8, 2023</a>).</p>
+    <p class="scrapped-body">That building was replaced in January 2024, when the new administration cut the state request to $500,000 "to re-conceptualize" the project as a new library with privately funded housing, commercial and retail development on the block (<a href="https://www.northernnewsnow.com/2024/01/23/duluth-city-council-passes-2024-legislative-priorities-including-library-funding/" target="_blank" rel="noopener">Northern News Now, Jan. 22, 2024</a>; <a href="https://duluthmn.gov/web-subscriptions/View-press-release/?prid=7677" target="_blank" rel="noopener">city press release, Jan. 22, 2024</a>). That request died when the 2024 session ended without a bonding bill (<a href="https://www.wdio.com/?p=424454" target="_blank" rel="noopener">WDIO, May 20, 2024</a>). For 2025 the council dropped the library from its top four priorities, adding it by amendment to a secondary list (<a href="https://www.northernnewsnow.com/2024/12/17/duluth-city-council-approves-legislative-priorities-budget" target="_blank" rel="noopener">Northern News Now, Dec. 16, 2024</a>). The 2026 bonding bill brought $24.6 million to Duluth-area projects — the water plant, the DECC, the airport tower, a hangar, the Union Gospel Mission — and nothing for the library (<a href="https://duluthmn.gov/web-subscriptions/View-press-release/?prid=8406" target="_blank" rel="noopener">city press release, May 19, 2026</a>). As far as the public record shows, no state money has gone to the building. <strong>The federal money stayed. It is now being used for something else.</strong></p>
+
+    <h3>What the money will do</h3>
+    <p class="scrapped-body">The city's <a href="docs/26-0731R-cover-memo.pdf" target="_blank" rel="noopener">cover memo</a> splits it three ways:</p>
+    <ul class="update-list">
+      <li><strong>$400,000</strong> for "assessment, planning and community engagement activities, and design development" for a "Library Concept."</li>
+      <li><strong>$1,050,000</strong> "for implementation of recommendations" — which the memo doesn't define.</li>
+      <li><strong>$300,000</strong> to Lake Superior Community Health Center, as a subaward, for planning a new health facility in western Duluth.</li>
+    </ul>
+    <p class="scrapped-body">The memo says the library planning "will evaluate alternatives that may or may not lead to physical improvements or alterations to existing facilities and/or plans for a new library facility." The resolution adds that those alternatives "could potentially support establishment of a new regional library services district." The memo says the funds "do not obligate the City to future action." In April the city's property director told the Library Board the work "may include the pursuit of a proposal to develop a small regional system" with branch options in nearby municipalities, and that an RFP could be completed in six to twelve months (<a href="https://www.lwvduluth.org/uploads/6/4/8/0/6480315/duluth_public_library_board.pdf" target="_blank" rel="noopener">League of Women Voters observer report, Library Board, Apr. 7, 2026</a>). Minnesota has twelve regional library systems; Duluth is in one of them. The mayor has said a library district "would require state involvement" (<a href="https://www.startribune.com/duluth-explores-moving-main-library-from-downtown-to-outskirts-of-city/601544293" target="_blank" rel="noopener">Star Tribune, Dec. 12, 2025</a>).</p>
+    <p class="scrapped-body"><strong>In other words: the federal money that was requested to build a downtown library will now fund a study of whether Duluth should build, renovate, relocate, or regionalize — and $1.05 million of it is reserved for whatever the study recommends.</strong></p>
+
+    <h3>This has been done before</h3>
+    <div class="update-history">
+      <div class="hist-item">
+        <div class="hist-year">2014–2015</div>
+        <div class="hist-body">The city hired MSR Design to assess the building. The firm produced four options, from a $27 million renovation to a $34 million new building, and said the city had about four years before the problems got more expensive (<a href="https://minnesotabrown.com/?p=17473" target="_blank" rel="noopener">Duluth News Tribune, Nov. 2014, via Minnesota Brown</a>). Its January 2015 plan found roughly $10 million in deferred maintenance and recommended a new 75,000-square-foot Main Library closer to the heart of downtown (<a href="https://duluthmn.gov/media/14401/appendix-b.pdf" target="_blank" rel="noopener">MSR Facilities Alternatives Plan, Jan. 16, 2015</a>; see the timeline below). A citizens' steering committee was to recommend an option to the council that February; the city's stated requirements were downtown, on a bus line, accessible to all residents (<a href="https://old.fox21online.com/?p=19564" target="_blank" rel="noopener">Fox21</a>). Later that year Mayor Ness paused the plan for more community input, calling it "a personal disappointment," and left the decision to the next mayor (<a href="https://old.fox21online.com/?p=14544" target="_blank" rel="noopener">Fox21, 2015</a>).</div>
+      </div>
+      <div class="hist-item">
+        <div class="hist-year">2023</div>
+        <div class="hist-body">The Larson administration hired MSR and LHB for design and NEOO Partners for community engagement, with the Library Foundation paying half (<a href="https://duluthmn.gov/web-subscriptions/View-press-release/?prid=7286" target="_blank" rel="noopener">city press release, Feb. 22, 2023</a>). Most residents who responded preferred new construction over renovation; renovating the existing building was estimated at $60 million. Mayor Larson named the $72 million building a top bonding priority, and the $1.75 million federal earmark was in the Senate committee's bill (<a href="https://www.startribune.com/duluth-proposes-new-72-million-downtown-library-if-it-gets-federal-and-state-help/600302959" target="_blank" rel="noopener">Star Tribune, Sept. 8, 2023</a>).</div>
+      </div>
+      <div class="hist-item">
+        <div class="hist-year">2024</div>
+        <div class="hist-body">The new administration dropped the request to $500,000, said the final vision for the space was undecided, and promised "no intention of closing or not having a library presence downtown" (<a href="https://www.northernnewsnow.com/2024/01/23/duluth-city-council-passes-2024-legislative-priorities-including-library-funding/" target="_blank" rel="noopener">Northern News Now, Jan. 22, 2024</a>). It also said none of its plans involved demolishing the library (<a href="https://www.wdio.com/front-page/top-stories/duluth-city-council-discuss-future-plans-for-the-public-library/" target="_blank" rel="noopener">WDIO, Jan. 23, 2024</a>).</div>
+      </div>
+      <div class="hist-item">
+        <div class="hist-year">2025–2026</div>
+        <div class="hist-body">The administration explored moving the Main Library into leased space in the Arrowpointe building at 4316 Rice Lake Road — about ten minutes by car from downtown — with a smaller leased space downtown and housing on the current block (<a href="https://www.startribune.com/duluth-explores-moving-main-library-from-downtown-to-outskirts-of-city/601544293" target="_blank" rel="noopener">Star Tribune, Dec. 12, 2025</a>; <a href="https://www.northernnewsnow.com/2025/12/18/duluth-city-leaders-consider-relocating-downtown-library/" target="_blank" rel="noopener">Northern News Now, Dec. 17, 2025</a>). Arrowpointe is the former UnitedHealthcare office building, redeveloped as a medical center by <strong>Titanium Partners, whose CEO is Brian Forcier</strong>; in 2024 it had about 22,000 square feet still unleased (<a href="https://www.wdio.com/front-page/top-stories/duluth-developer-takes-home-award-for-redevelopment-of-arrowpointe-medical-center/" target="_blank" rel="noopener">WDIO, Apr. 29, 2024</a>). "We have proven to be not a good caretaker of things we own," the mayor said. An engineer's report on the building "indicated the need for costly reinforcement" of load-bearing areas, and the site has no garage space; a Miller Hill Mall site "was not studied further"; downtown sites were studied for size and layout (<a href="https://www.lwvduluth.org/uploads/6/4/8/0/6480315/duluth_public_library_board.pdf" target="_blank" rel="noopener">LWV, Apr. 7, 2026</a>). None of those reports has been posted. The Michigan Street entrance closed April 6 (<a href="https://www.northernnewsnow.com/2026/03/31/duluth-public-library-closing-michigan-street-entrance/" target="_blank" rel="noopener">Northern News Now, Mar. 31, 2026</a>).</div>
+      </div>
+      <div class="hist-item">
+        <div class="hist-year">2026</div>
+        <div class="hist-body">A new study, funded by the 2023 earmark, with no RFP yet written.</div>
+      </div>
+    </div>
+
+    <p class="scrapped-body" style="margin-top:28px">Twelve years. Three rounds of consultants. The same 1980 building — the exterior walls leak and have no insulation; the roof leaks; the fire alarm, electrical, lighting, heating and cooling systems all need replacement; the elevator fails (<a href="https://www.startribune.com/duluth-proposes-new-72-million-downtown-library-if-it-gets-federal-and-state-help/600302959" target="_blank" rel="noopener">Star Tribune, 2023</a>; <a href="https://duluthlibraryfoundation.org/downtown-building/" target="_blank" rel="noopener">Duluth Library Foundation</a>). The last public estimate to renovate it was $60 million, in 2023. The city's 2026–2030 Capital Improvement Plan spends $2.9 million on its civic buildings — City Hall bathrooms, Priley Circle landscaping, City Hall security — <strong>and nothing on the library building</strong> (<a href="https://duluthmn.gov/media/kqbdiq3b/city-of-duluth-2026-budget-book.pdf" target="_blank" rel="noopener">2026 Approved Budget</a>, p. 269). The same budget says the city will build a "facility condition index dashboard" in 2026 to quantify deferred maintenance (p. 97); nothing has been released for the library.</p>
+
+    <h3>What else the Library Board was told September 1</h3>
+    <ul class="update-list">
+      <li>The 2027 library budget will be "status quo."</li>
+      <li>Library Manager Carla Powers retires in December after nearly seventeen years with the library (<a href="https://duluthmn.gov/web-subscriptions/View-press-release/?prid=8476" target="_blank" rel="noopener">city press release, July 31, 2026</a>). The job was posted in September and the city expects a new manager to start in early December — which means the person who will run the library during this study hasn't been hired yet.</li>
+      <li>The Main Library children's section will close for the month of November for an upgrade paid for by the Library Foundation, reopening in early December.</li>
+      <li>Saturday hours at Main resumed after Labor Day.</li>
+    </ul>
+
+    <h3>What we're asking</h3>
+    <p class="scrapped-body">The study is going to happen. The question is whether it is a real one.</p>
+    <ol class="update-list">
+      <li><strong>Put the current building and downtown sites in the scope.</strong> The RFP should require the consultant to evaluate renovating 520 W. Superior St. and building new downtown, with costs, alongside any relocation or regional option. The 2015 and 2023 studies already priced both; a study that starts from "regionalize" without them isn't a comparison.</li>
+      <li><strong>Release what's already been paid for.</strong> The Arrowpointe engineering report and the downtown site study. The public paid for both and has seen neither.</li>
+      <li><strong>Put the Library Board in charge of the RFP, in public.</strong> The work plan is being written by two staff. The board should approve the scope, the consultant, and the timeline at a noticed meeting, and the community engagement the memo promises should begin before the consultant is chosen, not after.</li>
+      <li><strong>Define "implementation."</strong> $1.05 million is set aside for "implementation of recommendations." Say now what that can and cannot be spent on, and that no lease, sale, or relocation will be signed under it without a council vote and a public hearing.</li>
+      <li><strong>A timeline.</strong> The board asked for one in April and was told six to twelve months for an RFP. It is October. Say when.</li>
+    </ol>
+    <p class="scrapped-body">The Library Board meets the first Tuesday of the month. The next meeting is <strong>November 3</strong>. <a href="#action">Come.</a></p>
+  </div>
+</section>
+
+
 <section class="stakes" id="stakes">
   <div class="container">
     <div class="section-label">The Stakes</div>
@@ -1500,7 +1654,7 @@
       <span class="attr">— Erin Kreeger, Executive Director, Duluth Library Foundation, to the City Council, January 2024</span>
     </p>
 
-    <p class="scrapped-body">Reinert maintained — then and since — that he never intended to eliminate a downtown library presence, and that he wanted to build on the prior work while seeking state funding for a reimagined project. That is a fair characterization of his stated position, and the record reflects it. But the practical effect is not in dispute: <strong>the $72 million new-build plan, with its federal and state funding pathways structured around the city as applicant, did not move forward.</strong> The 2024 Minnesota bonding bill failed entirely. Duluth's library has not surfaced in the subsequent Klobuchar–Smith Duluth-area appropriations announcements. And two years later, the "reconceptualized" vision had become a tour of a leased medical-office floor four miles from downtown — a floor that, in the end, couldn't hold the books.</p>
+    <p class="scrapped-body">Reinert maintained — then and since — that he never intended to eliminate a downtown library presence, and that he wanted to build on the prior work while seeking state funding for a reimagined project. That is a fair characterization of his stated position, and the record reflects it. But the practical effect is not in dispute: <strong>the $72 million new-build plan, with its federal and state funding pathways structured around the city as applicant, did not move forward.</strong> The 2024 Minnesota bonding bill failed entirely. The federal earmark did survive — $1.75 million, enacted in March 2024 — but the city let it sit until August 2026 and then accepted it for planning, not construction (<a href="#update">see the October 2026 update</a>). And two years later, the "reconceptualized" vision had become a tour of a leased medical-office floor four miles from downtown — a floor that, in the end, couldn't hold the books.</p>
 
     <p class="scrapped-body">That is the sequence this page asks Duluthians to sit with: <em>a community had built a fundable plan to keep and rebuild its library downtown, and within weeks of an election it was set aside — not through a public vote on the merits, but through a change of administration.</em> Whatever one thinks of the cost, a decision of that magnitude deserved the public process it never got.</p>
   </div>
@@ -1607,7 +1761,7 @@
         <div class="tl-date">January 2024</div>
         <h4>Mayor Reinert sets aside the downtown replacement plan</h4>
         <p>Within weeks of taking office, Mayor Reinert asks the City Council to "reconceptualize" the downtown library block as "housing, commercial and retail," with the library reduced to a smaller footprint similar to the Mount Royal branch. He calls the Larson-era plan too expensive — <em>"$72 to $75 million is a huge ask"</em> — while insisting he remains committed to a downtown library presence. The council pushes back, unanimously signaling it does not want the administration to turn its back on a new downtown facility.</p>
-        <p>The federal and state funding pathways that had been moving in 2023 required the city to be the applicant for the project as scoped. With the administration stepping back to revisit the plan, that momentum stalled. The 2024 Minnesota bonding bill failed entirely. The Duluth library has not appeared in the subsequent Klobuchar–Smith Duluth-area appropriations announcements, and no Duluth library project has surfaced in the state bonding requests that followed.</p>
+        <p>The federal and state funding pathways that had been moving in 2023 required the city to be the applicant for the project as scoped. With the administration stepping back to revisit the plan, that momentum stalled. The 2024 Minnesota bonding bill failed entirely. The federal earmark — $1.75 million — was enacted in March 2024 and sat unaccepted until August 2026, when the council took it for planning rather than construction (<a href="#update">October 2026 update</a>). No Duluth library project has surfaced in the state bonding requests that followed.</p>
         <span class="tl-source">Source: <a href="https://www.northernnewsnow.com/2024/01/19/mayor-reinert-changes-citys-plan-duluth-public-library/" target="_blank" rel="noopener">Northern News Now, Jan. 19, 2024</a> · <a href="https://www.duluthnewstribune.com/news/local/duluth-mayor-wants-to-rethink-proposed-library-plan" target="_blank" rel="noopener">Duluth News Tribune, Jan. 23, 2024</a></span>
       </div>
 
@@ -1710,6 +1864,34 @@
         <p>The consultant feasibility study reaches its conclusion: a structural engineer determines that Arrowpointe's second floor — the ~22,000 sq ft the city had been eyeing for the Main Library — cannot bear the weight of a full library collection. Books, shelving, and patrons are heavy; the floor was built for medical-office loads, not stacks. The relocation is abandoned.</p>
         <p>The site is off the table. The pattern that produced it is not. The administration moved a 135-year-old civic institution to the brink of relocation — touring the site, briefing the council by email, commissioning a feasibility study — and the public learned the full picture only because the building physically could not hold the library. No public hearing was held. No comparative study of downtown options was commissioned. The decision was reversed by a load calculation, not by the process a civic decision of this size demands.</p>
         <span class="tl-source">Source: Consultant feasibility study; Duluth Public Library Board minutes, spring 2026</span>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-date">April 7, 2026</div>
+        <h4>Library Board hears what the engineer found — and what comes next</h4>
+        <p>The city's property director tells the board the engineer's report on the Arrowpointe building "indicated the need for costly reinforcement" of load-bearing areas, and that the site has no garage space. A Miller Hill Mall site "was not studied further." A study of downtown sites "produced useful data on the size and layout needed." The HUD money is being pursued to use $400,000 for studying options, which "may include the pursuit of a proposal to develop a small regional system." Asked for a timeline, he says an RFP could be completed in six to twelve months.</p>
+        <span class="tl-source">Source: <a href="https://www.lwvduluth.org/uploads/6/4/8/0/6480315/duluth_public_library_board.pdf" target="_blank" rel="noopener">League of Women Voters observer report, Apr. 7, 2026</a></span>
+      </div>
+
+      <div class="tl-entry flag">
+        <div class="tl-date">August 24, 2026</div>
+        <h4>Council accepts the $1.75 million earmark — for a study</h4>
+        <p>The City Council adopts Resolution 26-0731R accepting $1,750,000 from HUD. The money is the fiscal-2024 earmark Senators Klobuchar and Smith secured in 2023 for the Larson-era downtown library project ("Center of Social Innovation Development"). The cover memo allocates $400,000 to planning and engagement, $1,050,000 to "implementation of recommendations," and $300,000 to Lake Superior Community Health Center, and says the planning "may or may not lead to" a new library facility. The resolution says the alternatives "could potentially support establishment of a new regional library services district."</p>
+        <span class="tl-source">Source: <a href="docs/26-0731R-resolution.pdf" target="_blank" rel="noopener">Resolution 26-0731R</a> · <a href="docs/26-0731R-cover-memo.pdf" target="_blank" rel="noopener">Cover memo</a> · <a href="https://www.appropriations.senate.gov/imo/media/doc/fy24_thud_cds.pdf" target="_blank" rel="noopener">Senate Appropriations FY2024 THUD earmark table</a></span>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-date">September 1, 2026</div>
+        <h4>Library Board: work plan "being finalized," RFP next; status quo budget; manager retiring</h4>
+        <p>Under the standing "Main Library Facility / Regional Library Services District" item, the board is told the property director and library manager "are finalizing the work plan. Next step is to start writing an RFP for study." No timeline. The 2027 library budget is expected to be "status quo." Library Manager Carla Powers, retiring in December after nearly 17 years, reviews the hiring process for her successor — posting closes September 20, start in early December. The Main Library children's section will close for November for a Foundation-funded upgrade.</p>
+        <span class="tl-source">Source: <a href="docs/library-board-minutes-2026-09-01.pdf" target="_blank" rel="noopener">Library Board minutes, Sept. 1, 2026</a> · <a href="https://duluthmn.gov/web-subscriptions/View-press-release/?prid=8476" target="_blank" rel="noopener">City press release, July 31, 2026</a></span>
+      </div>
+
+      <div class="tl-entry">
+        <div class="tl-date">October 6, 2026</div>
+        <h4>Library Board meets</h4>
+        <p>Minutes not yet posted. Next meeting: November 3, 2026.</p>
+        <span class="tl-source">Source: Library Board minutes, Sept. 1, 2026 (next-meeting notice)</span>
       </div>
 
     </div>
@@ -1884,8 +2066,8 @@
         <h3>Show up at the Library Board</h3>
         <p>The Library Board meets the first Tuesday of the month at 4:30 PM. Public comment is the first order of business.</p>
         <ul>
-          <li><strong>May 5, 2026</strong> — Main Library, Gold Room</li>
-          <li><strong>June 2, 2026</strong> — Main Library, Gold Room</li>
+          <li><strong>November 3, 2026</strong> — Main Library</li>
+          <li><strong>December 1, 2026</strong> — Main Library</li>
           <li>520 W. Superior St.</li>
         </ul>
       </div>
